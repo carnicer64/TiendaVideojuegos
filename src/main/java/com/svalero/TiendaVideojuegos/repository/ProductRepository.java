@@ -1,7 +1,6 @@
 package com.svalero.TiendaVideojuegos.repository;
 
 import com.svalero.TiendaVideojuegos.domain.Product;
-import com.svalero.TiendaVideojuegos.domain.dto.ProductOutDTO;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,11 +11,11 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 
     List<Product> findAll();
 
-    List<Product> findAllByName(String name);
+    List<Product> findByName(String name);
 
-    List<Product> findAllByCost(String cost);
+    List<Product> findByCost(String cost);
 
-    List<Product> findAllBySale(String sale);
+    List<Product> findBySale(String sale);
 
 
 }

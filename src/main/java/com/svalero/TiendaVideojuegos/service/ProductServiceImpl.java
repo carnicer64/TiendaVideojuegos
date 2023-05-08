@@ -39,7 +39,7 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public List<ProductOutDTO> findByName(String name) {
         logger.info("Name: " + name);
-        List<Product> products = productRepository.findAllByName(name);
+        List<Product> products = productRepository.findByName(name);
         List<ProductOutDTO> productOutDTO = modelMapper.map(products, new TypeToken<List<ProductOutDTO>>() {}.getType());
         return productOutDTO;
     }
@@ -47,7 +47,7 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public List<ProductOutDTO> findByCost(String cost) {
         logger.info("Cost price: " + cost);
-        List<Product> products = productRepository.findAllByCost(cost);
+        List<Product> products = productRepository.findByCost(cost);
         List<ProductOutDTO> productOutDTO = modelMapper.map(products, new TypeToken<List<ProductOutDTO>>() {}.getType());
         return productOutDTO;
     }
@@ -55,7 +55,7 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public List<ProductOutDTO> findBySale(String sale) {
         logger.info("Sale price: " + sale);
-        List<Product> products = productRepository.findAllBySale(sale);
+        List<Product> products = productRepository.findBySale(sale);
         List<ProductOutDTO> productOutDTO = modelMapper.map(products, new TypeToken<List<ProductOutDTO>>() {}.getType());
         return productOutDTO;
     }

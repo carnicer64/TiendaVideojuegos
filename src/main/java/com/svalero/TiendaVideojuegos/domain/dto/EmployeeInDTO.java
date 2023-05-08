@@ -1,4 +1,4 @@
-package com.svalero.TiendaVideojuegos.domain;
+package com.svalero.TiendaVideojuegos.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,17 +9,11 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "employees")
-public class Employee {
+public class EmployeeInDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column
     private String name;
-    @Column
     private String email;
-    @Column
     private Boolean boss;
 
 

@@ -32,7 +32,7 @@ public class ProductController {
     private final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     @GetMapping("/products")
-    public ResponseEntity<List<ProductOutDTO>> getProducts(Map<String, String> data) throws ProductNotFoundException {
+    public ResponseEntity<List<ProductOutDTO>> getProducts(@RequestParam Map<String, String> data) throws ProductNotFoundException {
         logger.info("GET Product");
 
         if (data.isEmpty()) {
@@ -82,7 +82,7 @@ public class ProductController {
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping
+    @PutMapping("/products/{id}")
     public ResponseEntity<Product> modifyProduct(@PathVariable long id, @RequestBody Product product) throws ProductNotFoundException {
         logger.info("PUT modify Product");
         Product newProduct = productService.modifyProduct(id, product);
@@ -90,7 +90,7 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.OK).body(newProduct);
     }
 
-    @ExceptionHandler(OrderNotFoundException.class)
+    @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<ErrorMessage> handleProductNotFoundException(ProductNotFoundException pnfe) {
         logger.error(pnfe.getMessage(), pnfe);
         ErrorMessage errorMessage = new ErrorMessage(404, pnfe.getMessage());
