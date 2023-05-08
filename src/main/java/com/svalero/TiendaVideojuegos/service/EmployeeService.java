@@ -16,7 +16,7 @@ public interface EmployeeService {
 
     List<EmployeeOutDTO> findByEmail(String email);
 
-    List<EmployeeOutDTO> findById(String id) throws EmployeeNotFoundException;
+    Employee findById(long id) throws EmployeeNotFoundException;
 
     List<EmployeeOutDTO> findByBoss(boolean boss);
 

@@ -1,7 +1,6 @@
 package com.svalero.TiendaVideojuegos.controller;
 
 import com.svalero.TiendaVideojuegos.Util.ErrorMessage;
-import com.svalero.TiendaVideojuegos.domain.Client;
 import com.svalero.TiendaVideojuegos.domain.Order;
 import com.svalero.TiendaVideojuegos.domain.dto.OrderInDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.OrderOutDTO;
@@ -53,7 +52,7 @@ public class OrderController {
         return ResponseEntity.ok(orders);
     }
 
-    @PostMapping("/clients/{id}")
+    @PostMapping("/clients/{id}/orders")
     public ResponseEntity<Order> addOrder(@PathVariable long id, @RequestBody OrderInDTO orderInDTO) throws ClientNotFoundException {
 
         Order order = orderService.addOrder(id, orderInDTO);
@@ -70,7 +69,7 @@ public class OrderController {
     }
 
     @PutMapping("/orders/{id}")
-    public ResponseEntity<Order> modifyBus(@PathVariable long id, @RequestBody Order order) throws OrderNotFoundException {
+    public ResponseEntity<Order> modifyOrder(@PathVariable long id, @RequestBody Order order) throws OrderNotFoundException {
 
         Order modOrder = orderService.modifyOrder(id, order);
 

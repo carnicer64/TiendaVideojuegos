@@ -81,7 +81,7 @@ public class ProductServiceImpl implements ProductService{
     public void deleteProduct(long id) throws ProductNotFoundException {
         Product product = productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
 
-                productRepository.delete(product);
+        productRepository.delete(product);
     }
 
     @Override

@@ -48,11 +48,6 @@ public class EmployeeController {
             List<EmployeeOutDTO> employees = employeeService.findByEmail(data.get(("email")));
             logger.info("Showing all employees by email");
             return ResponseEntity.ok(employees);
-        } else if (data.containsKey("id")) {
-            logger.info("ID: " + data.get("id"));
-            List<EmployeeOutDTO> employees = employeeService.findById(data.get(("id")));
-            logger.info("Showing all employees by id");
-            return ResponseEntity.ok(employees);
         } else if((data.containsKey("paid"))) {
             if (data.get("boss").equals("true")) {
                 List<EmployeeOutDTO> employees = employeeService.findByBoss(Boolean.TRUE);
@@ -71,6 +66,14 @@ public class EmployeeController {
 
         logger.info("Bad Request");
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+    @GetMapping("/employees/{id}")
+    public ResponseEntity<Employee> getEmployee(@PathVariable long id) throws EmployeeNotFoundException {
+        logger.info("Showing employees by ID");
+        Employee employee = employeeService.findById(id);
+        logger.info("GET END");
+        return ResponseEntity.ok(employee);
     }
 
     @PostMapping("/employees")
@@ -98,7 +101,7 @@ public class EmployeeController {
     }
 
     @ExceptionHandler(EmployeeNotFoundException.class)
-    public ResponseEntity<ErrorMessage> handleProductNotFoundException(EmployeeNotFoundException enfe) {
+    public ResponseEntity<ErrorMessage> handleEmployeeNotFoundException(EmployeeNotFoundException enfe) {
         logger.error(enfe.getMessage(), enfe);
         ErrorMessage errorMessage = new ErrorMessage(404, enfe.getMessage());
         return new ResponseEntity<>(errorMessage, HttpStatus.NOT_FOUND);
