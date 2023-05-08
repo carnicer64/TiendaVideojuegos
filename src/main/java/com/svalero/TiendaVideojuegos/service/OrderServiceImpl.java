@@ -43,17 +43,18 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public List<OrderOutDTO> findByClient(long id) {
-        List <OrderOutDTO> orders = orderRepository.findByClient_Id(id);
-        return orders;
+        List<Order> orders = orderRepository.findByClient_Id(id);
+        List<OrderOutDTO> orderOutDTO = modelMapper.map(orders, new TypeToken<List<OrderOutDTO>>() {}.getType());
+        return orderOutDTO;
     }
 
     @Override
-    public Order addBus(long id, OrderInDTO orderInDTO) throws ClientNotFoundException {
+    public Order addOrder(long id, OrderInDTO orderInDTO) throws ClientNotFoundException {
 
         Order newOrder = new Order();
         modelMapper.map(orderInDTO, newOrder);
 
-        Client client = clientRepository.findById(id). orElseThrow(ClientNotFoundException::new);
+        Client client = clientRepository.findById(id).orElseThrow(ClientNotFoundException::new);
         newOrder.setClient(client);
 
         return orderRepository.save(newOrder);
@@ -71,7 +72,7 @@ public class OrderServiceImpl implements OrderService{
     public Order modifyOrder(long id, Order order) throws OrderNotFoundException {
         Order existingOrder = orderRepository.findById(id).orElseThrow(OrderNotFoundException::new);
 
-        modelMapper. map(order, existingOrder);
+        modelMapper.map(order, existingOrder);
         existingOrder.setId(id);
 
         return orderRepository.save(existingOrder);

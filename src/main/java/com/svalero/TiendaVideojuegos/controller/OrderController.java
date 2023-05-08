@@ -1,6 +1,7 @@
 package com.svalero.TiendaVideojuegos.controller;
 
 import com.svalero.TiendaVideojuegos.Util.ErrorMessage;
+import com.svalero.TiendaVideojuegos.domain.Client;
 import com.svalero.TiendaVideojuegos.domain.Order;
 import com.svalero.TiendaVideojuegos.domain.dto.OrderInDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.OrderOutDTO;
@@ -55,7 +56,7 @@ public class OrderController {
     @PostMapping("/clients/{id}")
     public ResponseEntity<Order> addOrder(@PathVariable long id, @RequestBody OrderInDTO orderInDTO) throws ClientNotFoundException {
 
-        Order order = orderService.addBus(id, orderInDTO);
+        Order order = orderService.addOrder(id, orderInDTO);
 
         return ResponseEntity.ok(order);
     }

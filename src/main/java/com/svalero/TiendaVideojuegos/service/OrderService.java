@@ -16,7 +16,7 @@ public interface OrderService {
 
     List<OrderOutDTO> findByClient(long id);
 
-    Order addBus(long id, OrderInDTO orderInDTO) throws ClientNotFoundException;
+    Order addOrder(long id, OrderInDTO orderInDTO) throws ClientNotFoundException;
 
     void deleteOrder(long id) throws OrderNotFoundException;
 

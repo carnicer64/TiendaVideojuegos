@@ -13,5 +13,5 @@ public interface OrderRepository extends CrudRepository<Order, Long> {
     List<Order> findAll();
 
 
-    List<OrderOutDTO> findByClient_Id(long id);
+    List<Order> findByClient_Id(long id);
 }

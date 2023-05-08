@@ -17,7 +17,6 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private long id;
     @Column
     private LocalTime pDate;
