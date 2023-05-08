@@ -1,5 +1,7 @@
-package com.svalero.TiendaVideojuegos.domain;
+package com.svalero.TiendaVideojuegos.domain.dto;
 
+import com.svalero.TiendaVideojuegos.domain.Product;
+import com.svalero.TiendaVideojuegos.domain.Shop;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,23 +11,12 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "stocks")
-public class Stock {
+public class StockOutDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column
     private int amount;
-    @Column
     private String note;
-
-    @ManyToOne
-    @JoinColumn(name = "products_id")
     private Product product;
-
-    @OneToOne
-    @JoinColumn(name = "shops_id")
     private Shop shop;
 
 

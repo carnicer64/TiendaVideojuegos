@@ -27,7 +27,6 @@ public class Order {
     @Column
     private String oNote;
 
-
     @OneToOne
     @JoinColumn(name = "clientes_id")
     private Client client;

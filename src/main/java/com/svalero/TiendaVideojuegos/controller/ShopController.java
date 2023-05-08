@@ -25,7 +25,7 @@ public class ShopController {
     @Autowired
     private ShopService shopService;
 
-    private final Logger logger = LoggerFactory.getLogger(OrderController.class);
+    private final Logger logger = LoggerFactory.getLogger(ShopController.class);
 
 
     @GetMapping("/shops")
@@ -89,7 +89,7 @@ public class ShopController {
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/orders/{id}")
+    @PutMapping("/shops/{id}")
     public ResponseEntity<Shop> modifyShop(@PathVariable long id, @RequestBody Shop shop) throws ShopNotFoundException {
 
         Shop modShop = shopService.modifyShop(id, shop);

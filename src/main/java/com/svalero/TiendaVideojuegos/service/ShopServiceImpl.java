@@ -101,7 +101,6 @@ public class ShopServiceImpl implements ShopService {
     public Shop modifyShop(long id, Shop shop) throws ShopNotFoundException {
         logger.info("Modifying shop");
 
-
         Shop existingShop = shopRepository.findById(id).orElseThrow(ShopNotFoundException::new);
 
         modelMapper.map(shop, existingShop);
