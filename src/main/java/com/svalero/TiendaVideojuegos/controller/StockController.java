@@ -43,7 +43,7 @@ public class StockController {
         } else if(data.containsKey("amount")) {
             logger.info("Amount: " + data.get("Amount"));
             List<StockOutDTO> stock = stockService.findByAmount(data.get(("amount")));
-            logger.info("Showing all shops by name");
+            logger.info("Showing all shops by amount");
             return ResponseEntity.ok(stock);
         } else if(data.containsKey("note")) {
             logger.info("Note: " + data.get("note"));
@@ -96,10 +96,10 @@ public class StockController {
     }
 
     @PutMapping("/stock/{id}")
-    public ResponseEntity<Stock> modifyStock(@PathVariable long id, @RequestBody Stock stock) throws StockNotFoundException, ProductNotFoundException, ShopNotFoundException {
-
+    public ResponseEntity<Stock> modifyStock(@PathVariable long id, @RequestBody Stock stock) throws StockNotFoundException {
+        logger.info("PUT modify Stock");
         Stock modStock = stockService.modifyStock(id, stock);
-
+        logger.info("PUT END");
         return ResponseEntity.status(HttpStatus.OK).body(modStock);
     }
 

@@ -3,8 +3,6 @@ package com.svalero.TiendaVideojuegos.service;
 import com.svalero.TiendaVideojuegos.domain.Product;
 import com.svalero.TiendaVideojuegos.domain.Shop;
 import com.svalero.TiendaVideojuegos.domain.Stock;
-import com.svalero.TiendaVideojuegos.domain.dto.ShopInDTO;
-import com.svalero.TiendaVideojuegos.domain.dto.ShopOutDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.StockInDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.StockOutDTO;
 import com.svalero.TiendaVideojuegos.exception.ProductNotFoundException;
@@ -86,7 +84,7 @@ public class StockServiceImpl implements StockService{
 
     @Override
     public Stock addStock(StockInDTO stockInDTO) throws ProductNotFoundException, ShopNotFoundException {
-        logger.info("Creating shop");
+        logger.info("Creating stock");
 
         Stock newStock = new Stock();
         modelMapper.map(stockInDTO, newStock);
