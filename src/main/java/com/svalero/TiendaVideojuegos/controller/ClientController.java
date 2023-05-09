@@ -4,7 +4,9 @@ import com.svalero.TiendaVideojuegos.Util.ErrorMessage;
 import com.svalero.TiendaVideojuegos.domain.Client;
 import com.svalero.TiendaVideojuegos.domain.dto.ClientInDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.ClientOutDTO;
+import com.svalero.TiendaVideojuegos.domain.dto.ProductOutDTO;
 import com.svalero.TiendaVideojuegos.exception.ClientNotFoundException;
+import com.svalero.TiendaVideojuegos.exception.ProductNotFoundException;
 import com.svalero.TiendaVideojuegos.service.ClientService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +32,32 @@ public class ClientController {
     private final Logger logger = LoggerFactory.getLogger(ClientController.class);
 
     @GetMapping("/clients")
+    public ResponseEntity<List<ClientOutDTO>> getClients(@RequestParam Map<String, String> data) throws ClientNotFoundException {
+        logger.info("GET Client");
+
+        if (data.isEmpty()) {
+            logger.info("Showing all clients");
+            return ResponseEntity.ok(clientService.findAll());
+        } else if(data.containsKey("id")) {
+            logger.info("id: " + data.get("id"));
+            List<ClientOutDTO> client = new ArrayList<>();
+            client.add(clientService.findById(Long.parseLong(data.get(("id")))));
+            logger.info("Showing all clients by ID");
+            return ResponseEntity.ok(client);
+        } else if(data.containsKey("name")) {
+            logger.info("Name: " + data.get("name"));
+            List<ClientOutDTO> client = clientService.findByName(data.get(("name")));
+            logger.info("Showing all products by name");
+            return ResponseEntity.ok(client);
+        }
+        logger.info("Bad Request");
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+
+
+
+    /*@GetMapping("/clients")
     public ResponseEntity<List<ClientOutDTO>> getClients() throws ClientNotFoundException{
         logger.info("Begin GET Clients");
         logger.info("End GET Clients");
@@ -41,23 +70,28 @@ public class ClientController {
         Client client = clientService.findById(idClient);
         logger.info("End GET Client");
         return ResponseEntity.ok(client);
-    }
+    }*/
 
     @PostMapping("/clients")
-    public ResponseEntity<Client> addClient(@Valid @RequestBody ClientInDTO clientInDTO) {
+    public ResponseEntity<Client> addClient(@RequestBody ClientInDTO clientInDTO) {
         logger.info("Begin POST Client");
+        logger.info("Client " + clientInDTO);
+
+
         Client client = clientService.addClient(clientInDTO);
         logger.info("End POST Client");
         return ResponseEntity.status(HttpStatus.CREATED).body(client);
     }
 
-    @PutMapping("/clients/{idClient}")
-    public ResponseEntity<Client> modifyClient(@PathVariable long idClient, @Valid @RequestBody ClientInDTO clientInDTO) throws ClientNotFoundException{
+    @PutMapping("/clients/{id}")
+    public ResponseEntity<Client> modifyClient(@PathVariable long id, @Valid @RequestBody ClientInDTO clientInDTO) throws ClientNotFoundException{
         logger.info("Begin PUT Client");
-        Client modifiedClient= clientService.modifyClient(idClient, clientInDTO);
+
+        Client modClient = clientService.modifyClient(id, clientInDTO);
+        modClient.setId(id);
 
         logger.info("End PUT Client");
-        return ResponseEntity.status(HttpStatus.OK).body(modifiedClient);
+        return ResponseEntity.status(HttpStatus.OK).body(modClient);
     }
 
     @DeleteMapping("/clients/{idClient}")

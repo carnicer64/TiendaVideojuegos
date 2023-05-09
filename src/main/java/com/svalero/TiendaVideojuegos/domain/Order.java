@@ -1,13 +1,14 @@
 package com.svalero.TiendaVideojuegos.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
 import javax.persistence.*;
-import java.time.LocalTime;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -19,13 +20,15 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column
-    private LocalTime pDate;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private Date pDate;
     @Column
-    private LocalTime dDate;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private Date dDate;
+    @Column(columnDefinition = "double default null")
+    private double orderPrice;
     @Column
-    private double oPrice;
-    @Column
-    private String oNote;
+    private String note;
 
     @OneToOne
     @JoinColumn(name = "clientes_id")

@@ -19,11 +19,11 @@ public interface OrderLineService {
 
     List<OrderLineOutDTO> findByPrice(String s);
 
-    OrderLine findById(long id) throws OrderLineNotFoundException;
+    OrderLineOutDTO findById(long id) throws OrderLineNotFoundException;
 
-    List<OrderLine> findByStock(long id);
+    OrderLineOutDTO findByStock(long id);
 
-    List<OrderLine> findByOrder(long id);
+    OrderLineOutDTO findByOrder(long id);
 
     OrderLine addOrderLine(OrderLineInDTO orderLineInDTO) throws StockNotFoundException, OrderNotFoundException;
 

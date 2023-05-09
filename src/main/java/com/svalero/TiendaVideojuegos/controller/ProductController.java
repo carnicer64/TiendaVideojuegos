@@ -6,6 +6,7 @@ import com.svalero.TiendaVideojuegos.domain.Product;
 import com.svalero.TiendaVideojuegos.domain.dto.OrderOutDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.ProductInDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.ProductOutDTO;
+import com.svalero.TiendaVideojuegos.domain.dto.ShopOutDTO;
 import com.svalero.TiendaVideojuegos.exception.ClientNotFoundException;
 import com.svalero.TiendaVideojuegos.exception.OrderNotFoundException;
 import com.svalero.TiendaVideojuegos.exception.ProductNotFoundException;
@@ -19,6 +20,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,6 +40,12 @@ public class ProductController {
         if (data.isEmpty()) {
             logger.info("Showing all products");
             return ResponseEntity.ok(productService.findAll());
+        } else if(data.containsKey("id")) {
+            logger.info("id: " + data.get("id"));
+            List<ProductOutDTO> product = new ArrayList<>();
+            product.add(productService.findById(Long.parseLong(data.get(("id")))));
+            logger.info("Showing all products by ID");
+            return ResponseEntity.ok(product);
         } else if(data.containsKey("name")) {
             logger.info("Name: " + data.get("name"));
             List<ProductOutDTO> products = productService.findByName(data.get(("name")));
@@ -45,12 +53,12 @@ public class ProductController {
             return ResponseEntity.ok(products);
         } else if(data.containsKey("cost")) {
             logger.info("Cost price: " + data.get("cost"));
-            List<ProductOutDTO> products = productService.findByCost(data.get(("cost")));
+            List<ProductOutDTO> products = productService.findByCost(Double.parseDouble(data.get(("cost"))));
             logger.info("Showing all products by cost price");
             return ResponseEntity.ok(products);
         } else if (data.containsKey("sale")) {
             logger.info("Sale price: " + data.get("sale"));
-            List<ProductOutDTO> products = productService.findBySale(data.get(("sale")));
+            List<ProductOutDTO> products = productService.findBySale(Double.parseDouble(data.get(("sale"))));
             logger.info("Showing all products by sale price");
             return ResponseEntity.ok(products);
         }
@@ -58,19 +66,19 @@ public class ProductController {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    @GetMapping("/products/{id}")
+    /*@GetMapping("/products/{id}")
     public ResponseEntity<Product> getProduct(@PathVariable long id) throws ProductNotFoundException {
         logger.info("Showing all products by ID");
         Product product = productService.findById(id);
         logger.info("GET END");
         return ResponseEntity.ok(product);
-    }
+    }*/
 
     @PostMapping("/products")
         public ResponseEntity<Product> addProduct(@RequestBody ProductInDTO productInDTO){
-        logger.info("POST Adding product");
+        logger.info("POST Adding product - addProduct" + productInDTO);
         Product product = productService.addProduct(productInDTO);
-        logger.info("POST END");
+        logger.info("POST addProduct - end");
         return ResponseEntity.status(HttpStatus.OK).body(product);
     }
 

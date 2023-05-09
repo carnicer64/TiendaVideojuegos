@@ -18,14 +18,14 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column
-    private String cName;
+    private String name;
     @Column
-    private String cAdress;
+    private String adress;
     @Column
-    private String cEmail;
+    private String email;
     @Column
-    private String cTlf;
+    private String tlf;
     @Column
-    private String cNIF;
+    private String nif;
 
 }

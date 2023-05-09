@@ -3,9 +3,7 @@ package com.svalero.TiendaVideojuegos.service;
 import com.svalero.TiendaVideojuegos.domain.Employee;
 import com.svalero.TiendaVideojuegos.domain.dto.EmployeeInDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.EmployeeOutDTO;
-import com.svalero.TiendaVideojuegos.domain.dto.ProductOutDTO;
 import com.svalero.TiendaVideojuegos.exception.EmployeeNotFoundException;
-import com.svalero.TiendaVideojuegos.exception.OrderNotFoundException;
 import com.svalero.TiendaVideojuegos.repository.EmployeeRepository;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -35,7 +33,7 @@ public class EmployeeServiceImpl implements EmployeeService{
     @Override
     public List<EmployeeOutDTO> findAll() {
         List<Employee> employees = employeeRepository.findAll();
-        List<EmployeeOutDTO> employeeOutDTO = modelMapper.map(employees, new TypeToken<List<ProductOutDTO>>() {}.getType());
+        List<EmployeeOutDTO> employeeOutDTO = modelMapper.map(employees, new TypeToken<List<EmployeeOutDTO>>() {}.getType());
 
         return employeeOutDTO;
     }
@@ -57,10 +55,13 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public Employee findById(long id) throws EmployeeNotFoundException {
+    public EmployeeOutDTO findById(long id) throws EmployeeNotFoundException {
         logger.info("ID: " + id);
 
-        return employeeRepository.findById(id).orElseThrow(EmployeeNotFoundException::new);
+        Employee employee = employeeRepository.findById(id).orElseThrow(EmployeeNotFoundException::new);
+        logger.info("employee: " + employee);
+        EmployeeOutDTO employeeOutDTO = modelMapper.map(employee, new TypeToken<EmployeeOutDTO>() {}.getType());
+        return employeeOutDTO;
 
     }
 

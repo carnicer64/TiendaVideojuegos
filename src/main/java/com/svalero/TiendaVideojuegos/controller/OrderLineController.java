@@ -19,10 +19,12 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@RestController
 public class OrderLineController {
 
     @Autowired
@@ -32,24 +34,42 @@ public class OrderLineController {
 
 
     @GetMapping("/orderlines")
-    public ResponseEntity<List<OrderLineOutDTO>> getOrderLines(@RequestParam Map<String, String> data) {
-        logger.info("GET Shops");
+    public ResponseEntity<List<OrderLineOutDTO>> getOrderLines(@RequestParam Map<String, String> data) throws OrderLineNotFoundException{
+        logger.info("GET OrderLines");
 
         if (data.isEmpty()) {
             logger.info("Showing all order lines");
             return ResponseEntity.ok(orderLineService.findAll());
-        } else if(data.containsKey("amount")) {
-            logger.info("Amount: " + data.get("Amount"));
+        } else if(data.containsKey("id")) {
+            logger.info("id: " + data.get("id"));
+            List<OrderLineOutDTO> orderLine = new ArrayList<>();
+            orderLine.add(orderLineService.findById(Long.parseLong(data.get(("id")))));
+            logger.info("Showing all order lines by ID");
+            return ResponseEntity.ok(orderLine);
+        } else if(data.containsKey("idStock")) {
+            logger.info("idStock: " + data.get("idStock"));
+            List<OrderLineOutDTO> orderLine = new ArrayList<>();
+            orderLine.add(orderLineService.findByStock(Long.parseLong(data.get(("idStock")))));
+            logger.info("Showing all order lines by stock ID");
+            return ResponseEntity.ok(orderLine);
+        } else if(data.containsKey("idOrder")) {
+            logger.info("idOrder: " + data.get("idOrder"));
+            List<OrderLineOutDTO> orderLine = new ArrayList<>();
+            orderLine.add(orderLineService.findByOrder(Long.parseLong(data.get(("idOrder")))));
+            logger.info("Showing all order lines by order ID");
+            return ResponseEntity.ok(orderLine);
+        }else if(data.containsKey("amount")) {
+            logger.info("Amount: " + data.get("amount"));
             List<OrderLineOutDTO> oLines = orderLineService.findByAmount(data.get(("amount")));
             logger.info("Showing all order lines by amount");
             return ResponseEntity.ok(oLines);
         } else if(data.containsKey("name")) {
-            logger.info("Name: " + data.get("name"));
+            logger.info("Product name: " + data.get("name"));
             List<OrderLineOutDTO> oLines = orderLineService.findByName(data.get(("name")));
             logger.info("Showing all order lines by name");
             return ResponseEntity.ok(oLines);
         } else if(data.containsKey("price")) {
-            logger.info("Note: " + data.get("name"));
+            logger.info("Line Price: " + data.get("price"));
             List<OrderLineOutDTO> oLines = orderLineService.findByPrice(data.get(("price")));
             logger.info("Showing all order lines by price");
             return ResponseEntity.ok(oLines);
@@ -58,7 +78,7 @@ public class OrderLineController {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    @GetMapping("/orderlines/{id}")
+    /*@GetMapping("/orderlines/{id}")
     public ResponseEntity<OrderLine> getOrderLine(@PathVariable long id) throws OrderLineNotFoundException {
         logger.info("Showing all order lines by ID");
         OrderLine orderLine = orderLineService.findById(id);
@@ -80,28 +100,30 @@ public class OrderLineController {
         List<OrderLine> oLines = orderLineService.findByOrder(id);
         logger.info("GET END");
         return ResponseEntity.ok(oLines);
-    }
+    }*/
 
-    @PostMapping("/orderlines/{id}")
+    @PostMapping("/orderlines")
     public ResponseEntity<OrderLine> addOrderLine(@RequestBody OrderLineInDTO orderLineInDTO) throws StockNotFoundException, OrderNotFoundException {
-        logger.info("POST Adding stock");
+        logger.info("POST Adding Order Line");
         OrderLine orderLine = orderLineService.addOrderLine(orderLineInDTO);
         logger.info("POST END");
         return ResponseEntity.status(HttpStatus.OK).body(orderLine);
     }
 
-    @DeleteMapping("/orderlines")
+    @DeleteMapping("/orderlines/{id}")
     public ResponseEntity<Void> deleteOrderLines(@PathVariable long id) throws OrderLineNotFoundException {
-        logger.info("DELETE stock");
+        logger.info("DELETE Order Line");
         orderLineService.deleteOrderLine(id);
         logger.info("DELETE END");
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/stock/{id}")
+    @PutMapping("/orderlines/{id}")
     public ResponseEntity<OrderLine> modifyStock(@PathVariable long id, @RequestBody OrderLine orderLine) throws OrderLineNotFoundException {
+        logger.info("PUT MODIFYING Order Line");
 
         OrderLine modOrderLine = orderLineService.modifyOrderLine(id, orderLine);
+        logger.info("PUT END");
 
         return ResponseEntity.status(HttpStatus.OK).body(modOrderLine);
     }

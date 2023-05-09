@@ -2,9 +2,14 @@ package com.svalero.TiendaVideojuegos.service;
 
 
 import com.svalero.TiendaVideojuegos.domain.Client;
+import com.svalero.TiendaVideojuegos.domain.Employee;
+import com.svalero.TiendaVideojuegos.domain.Shop;
 import com.svalero.TiendaVideojuegos.domain.dto.ClientInDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.ClientOutDTO;
+import com.svalero.TiendaVideojuegos.domain.dto.EmployeeOutDTO;
+import com.svalero.TiendaVideojuegos.domain.dto.ShopOutDTO;
 import com.svalero.TiendaVideojuegos.exception.ClientNotFoundException;
+import com.svalero.TiendaVideojuegos.exception.ShopNotFoundException;
 import com.svalero.TiendaVideojuegos.repository.ClientRepository;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -37,30 +42,52 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Client findById(long idClient) throws ClientNotFoundException {
+    public ClientOutDTO findById(long idClient) throws ClientNotFoundException {
         logger.info("Finding Client by id");
-        return clientRepository.findById(idClient)
-                .orElseThrow(ClientNotFoundException::new);
+
+        Client client = clientRepository.findById(idClient).orElseThrow(ClientNotFoundException::new);
+        ClientOutDTO clientOutDTO = modelMapper.map(client, new TypeToken<ClientOutDTO>() {}.getType());
+
+        return clientOutDTO;
     }
 
+    @Override
+    public List<ClientOutDTO> findByName(String name) {
+        logger.info("Finding Client by name");
+        logger.info("Name: " + name);
+
+        List<Client> clients = clientRepository.findByName(name);
+        List<ClientOutDTO> clientOutDTO = modelMapper.map(clients, new TypeToken<List<ClientOutDTO>>() {}.getType());
+
+        return clientOutDTO;
+    }
 
     //PUEDE DAR PROBLEMAS EL ID EN EL clientINdto
     @Override
     public Client addClient(ClientInDTO clientInDTO)  {
         logger.info("Adding Client");
         Client newClient = new Client();
-        modelMapper.map(clientInDTO, newClient);
-        logger.info("The client was added");
 
+        logger.info("Client " + clientInDTO);
+        modelMapper.map(clientInDTO, newClient);
+
+        logger.info("The client was added");
+        logger.info("Client " + newClient);
         return clientRepository.save(newClient);
     }
 
     @Override
-    public Client modifyClient(long idClient, ClientInDTO clientInDTO) throws ClientNotFoundException {
+    public Client modifyClient(long id, ClientInDTO clientInDTO) throws ClientNotFoundException {
         logger.info("Modifying Client");
-        Client modClient = clientRepository.findById(idClient).orElseThrow(ClientNotFoundException::new);
+
+        Client modClient = clientRepository.findById(id).orElseThrow(ClientNotFoundException::new);
         modelMapper.map(clientInDTO, modClient);
+        modClient.setId(id);
+
+
         logger.info("The client was modified");
+
+
         return clientRepository.save(modClient);
     }
 

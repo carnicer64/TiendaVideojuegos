@@ -12,11 +12,11 @@ import java.util.List;
 public interface OrderService {
     List<OrderOutDTO> findAll();
 
-    Order findById(long id) throws OrderNotFoundException;
+    OrderOutDTO findById(long id) throws OrderNotFoundException;
 
     List<OrderOutDTO> findByClient(long id);
 
-    Order addOrder(long id, OrderInDTO orderInDTO) throws ClientNotFoundException;
+    Order addOrder(OrderInDTO orderInDTO) throws ClientNotFoundException;
 
     void deleteOrder(long id) throws OrderNotFoundException;
 

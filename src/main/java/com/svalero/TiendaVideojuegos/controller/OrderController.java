@@ -2,8 +2,10 @@ package com.svalero.TiendaVideojuegos.controller;
 
 import com.svalero.TiendaVideojuegos.Util.ErrorMessage;
 import com.svalero.TiendaVideojuegos.domain.Order;
+import com.svalero.TiendaVideojuegos.domain.dto.ClientOutDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.OrderInDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.OrderOutDTO;
+import com.svalero.TiendaVideojuegos.domain.dto.StockOutDTO;
 import com.svalero.TiendaVideojuegos.exception.ClientNotFoundException;
 import com.svalero.TiendaVideojuegos.exception.OrderNotFoundException;
 import com.svalero.TiendaVideojuegos.service.OrderService;
@@ -16,6 +18,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,9 +32,33 @@ public class OrderController {
     private final Logger logger = LoggerFactory.getLogger(OrderController.class);
 
     @GetMapping("/orders")
+    public ResponseEntity<List<OrderOutDTO>> getOrders(@RequestParam Map<String, String> data) throws OrderNotFoundException {
+        logger.info("GET Order");
+
+        if (data.isEmpty()) {
+            logger.info("Showing all order");
+            return ResponseEntity.ok(orderService.findAll());
+        } else if(data.containsKey("id")) {
+            logger.info("id: " + data.get("id"));
+            List<OrderOutDTO> order = new ArrayList<>();
+            order.add(orderService.findById(Long.parseLong(data.get(("id")))));
+            logger.info("Showing all orders by ID");
+            return ResponseEntity.ok(order);
+        } else if(data.containsKey("idClient")) {
+            logger.info("idProduct: " + data.get("idClient"));
+            List<OrderOutDTO> order = orderService.findByClient(Long.parseLong(data.get(("idClient"))));
+            logger.info("Showing all orders by client ID");
+            return ResponseEntity.ok(order);
+        }
+        logger.info("Bad Request");
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+
+    /*@GetMapping("/orders")
     public ResponseEntity<List<OrderOutDTO>> getOrders(){
 
-        logger.info("GETTING Clients");
+        logger.info("GETTING orders");
 
         return ResponseEntity.ok(orderService.findAll());
     }
@@ -50,14 +77,17 @@ public class OrderController {
         List<OrderOutDTO> orders = orderService.findByClient(id);
 
         return ResponseEntity.ok(orders);
-    }
+    }*/
 
-    @PostMapping("/clients/{id}/orders")
-    public ResponseEntity<Order> addOrder(@PathVariable long id, @RequestBody OrderInDTO orderInDTO) throws ClientNotFoundException {
+    @PostMapping("/orders")
+    public ResponseEntity<Order> addOrder(@RequestBody OrderInDTO orderInDTO) throws ClientNotFoundException {
+        logger.info("POST Order");
+        logger.info("orderInDTO " + orderInDTO);
 
-        Order order = orderService.addOrder(id, orderInDTO);
+        Order order = orderService.addOrder(orderInDTO);
+        logger.info("POST Order END");
 
-        return ResponseEntity.ok(order);
+        return ResponseEntity.status(HttpStatus.OK).body(order);
     }
 
     @DeleteMapping("/orders/{id}")

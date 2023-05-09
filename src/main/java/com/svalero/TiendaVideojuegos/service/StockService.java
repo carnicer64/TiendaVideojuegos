@@ -13,15 +13,15 @@ import java.util.List;
 public interface StockService {
     List<StockOutDTO> findAll();
 
-    List<StockOutDTO> findByNote(String s);
+    List<StockOutDTO> findByNote(String note);
 
-    List<StockOutDTO> findByAmount(String s);
+    List<StockOutDTO> findByAmount(int amount);
 
-    Stock findById(long id) throws StockNotFoundException;
+    StockOutDTO findById(long id) throws StockNotFoundException;
 
-    List<Stock> findByProduct(long id);
+    List<StockOutDTO> findByProduct(long id);
 
-    Stock findByShop(long id);
+    List<StockOutDTO> findByShop(long id);
 
     Stock addStock(StockInDTO stockInDTO) throws ProductNotFoundException, ShopNotFoundException;
 

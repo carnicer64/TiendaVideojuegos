@@ -4,7 +4,6 @@ import com.svalero.TiendaVideojuegos.domain.Employee;
 import com.svalero.TiendaVideojuegos.domain.dto.EmployeeInDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.EmployeeOutDTO;
 import com.svalero.TiendaVideojuegos.exception.EmployeeNotFoundException;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -16,7 +15,7 @@ public interface EmployeeService {
 
     List<EmployeeOutDTO> findByEmail(String email);
 
-    Employee findById(long id) throws EmployeeNotFoundException;
+    EmployeeOutDTO findById(long id) throws EmployeeNotFoundException;
 
     List<EmployeeOutDTO> findByBoss(boolean boss);
 

@@ -67,24 +67,33 @@ public class OrderLineServiceImpl implements OrderLineService{
     }
 
     @Override
-    public OrderLine findById(long id) throws OrderLineNotFoundException {
+    public OrderLineOutDTO findById(long id) throws OrderLineNotFoundException {
         logger.info("ID: " + id);
 
-        return orderLineRepository.findById(id).orElseThrow(OrderLineNotFoundException::new);
+        OrderLine orderLine = orderLineRepository.findById(id).orElseThrow(OrderLineNotFoundException::new);
+        OrderLineOutDTO orderLineOutDTO = modelMapper.map(orderLine, new TypeToken<OrderLineOutDTO>() {}.getType());
+
+        return orderLineOutDTO;
     }
 
     @Override
-    public List<OrderLine> findByStock(long id) {
+    public OrderLineOutDTO findByStock(long id) {
         logger.info("IDStock: " + id);
 
-        return orderLineRepository.findByStock_Id(id);
+        OrderLine orderLine = orderLineRepository.findByStock_Id(id);
+        OrderLineOutDTO orderLineOutDTO = modelMapper.map(orderLine, new TypeToken<OrderLineOutDTO>() {}.getType());
+
+        return orderLineOutDTO;
     }
 
     @Override
-    public List<OrderLine> findByOrder(long id) {
+    public OrderLineOutDTO findByOrder(long id) {
         logger.info("IDOrder: " + id);
 
-        return orderLineRepository.findByOrder_Id(id);
+        OrderLine orderLine = orderLineRepository.findByOrder_Id(id);
+        OrderLineOutDTO orderLineOutDTO = modelMapper.map(orderLine, new TypeToken<OrderLineOutDTO>() {}.getType());
+
+        return orderLineOutDTO;
     }
 
     @Override

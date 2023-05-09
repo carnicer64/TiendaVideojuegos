@@ -63,10 +63,13 @@ public class ShopServiceImpl implements ShopService {
     }
 
     @Override
-    public Shop findById(long id) throws ShopNotFoundException {
+    public ShopOutDTO findById(long id) throws ShopNotFoundException {
         logger.info("ID: " + id);
 
-        return shopRepository.findById(id).orElseThrow(ShopNotFoundException::new);
+        Shop shop = shopRepository.findById(id).orElseThrow(ShopNotFoundException::new);
+        ShopOutDTO shopOutDTO = modelMapper.map(shop, new TypeToken<ShopOutDTO>() {}.getType());
+
+        return shopOutDTO;
     }
 
 
@@ -78,13 +81,15 @@ public class ShopServiceImpl implements ShopService {
     }
 
     @Override
-    public Shop addShop(long id, ShopInDTO shopInDTO) throws EmployeeNotFoundException {
+    public Shop addShop(ShopInDTO shopInDTO) throws EmployeeNotFoundException {
         logger.info("Creating shop");
 
         Shop newShop = new Shop();
         modelMapper.map(shopInDTO, newShop);
 
-        Employee employee = employeeRepository.findById(id).orElseThrow(EmployeeNotFoundException::new);
+        logger.info("newShop" + newShop);
+        Employee employee = employeeRepository.findById(newShop.getEmployee().getId()).orElseThrow(EmployeeNotFoundException::new);
+
         newShop.setEmployee(employee);
 
         return shopRepository.save(newShop);
@@ -101,11 +106,10 @@ public class ShopServiceImpl implements ShopService {
     public Shop modifyShop(long id, Shop shop) throws ShopNotFoundException {
         logger.info("Modifying shop");
 
-        Shop existingShop = shopRepository.findById(id).orElseThrow(ShopNotFoundException::new);
+        Shop modShop = shopRepository.findById(id).orElseThrow(ShopNotFoundException::new);
+        modelMapper.map(shop, modShop);
+        modShop.setId(id);
 
-        modelMapper.map(shop, existingShop);
-        existingShop.setId(id);
-
-        return shopRepository.save(existingShop);
+        return shopRepository.save(modShop);
     }
 }

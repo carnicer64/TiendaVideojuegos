@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ClientInDTO {
 
-    private long idClient;
-    private String cName;
-    private String cAdress;
-    private String cEmail;
-    private String cTlf;
-    private String cNIF;
+    private long id;
+    private String name;
+    private String adress;
+    private String email;
+    private String tlf;
+    private String nif;
 }

@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 public class ProductInDTO {
 
     private long id;
-    private String pName;
-    private double costPrice;
-    private double salePrice;
+    private String name;
+    private double cost;
+    private double sale;
     private int barCode;
     private String imageURL;
 }

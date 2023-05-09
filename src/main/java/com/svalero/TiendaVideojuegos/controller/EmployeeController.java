@@ -2,13 +2,9 @@ package com.svalero.TiendaVideojuegos.controller;
 
 import com.svalero.TiendaVideojuegos.Util.ErrorMessage;
 import com.svalero.TiendaVideojuegos.domain.Employee;
-import com.svalero.TiendaVideojuegos.domain.Product;
 import com.svalero.TiendaVideojuegos.domain.dto.EmployeeInDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.EmployeeOutDTO;
-import com.svalero.TiendaVideojuegos.domain.dto.ProductInDTO;
-import com.svalero.TiendaVideojuegos.domain.dto.ProductOutDTO;
 import com.svalero.TiendaVideojuegos.exception.EmployeeNotFoundException;
-import com.svalero.TiendaVideojuegos.exception.ProductNotFoundException;
 import com.svalero.TiendaVideojuegos.service.EmployeeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +15,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,34 +29,41 @@ public class EmployeeController {
     private final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 
     @GetMapping("/employees")
-    public ResponseEntity<List<EmployeeOutDTO>> getEmployees(@RequestParam Map<String, String> data) throws EmployeeNotFoundException {
+    public ResponseEntity<List<EmployeeOutDTO>> getEmployees(@RequestParam Map<String, String> map) throws EmployeeNotFoundException {
         logger.info("GET Employee");
 
-        if (data.isEmpty()) {
+
+        if (map.isEmpty()) {
             logger.info("Showing all employees");
             return ResponseEntity.ok(employeeService.findAll());
-        } else if(data.containsKey("name")) {
-            logger.info("Name: " + data.get("name"));
-            List<EmployeeOutDTO> employees = employeeService.findByName(data.get(("name")));
+        } else if(map.containsKey("id")) {
+            logger.info("Id: " + map.get("id"));
+            List<EmployeeOutDTO> employees = new ArrayList<>();
+            employees.add(employeeService.findById(Long.parseLong(map.get(("id")))));
+            logger.info("Showing all employees by ID");
+            return ResponseEntity.ok(employees);
+        }else if(map.containsKey("name")) {
+            logger.info("Name: " + map.get("name"));
+            List<EmployeeOutDTO> employees = employeeService.findByName(map.get(("name")));
             logger.info("Showing all employees by name");
             return ResponseEntity.ok(employees);
-        } else if(data.containsKey("email")) {
-            logger.info("Email: " + data.get("email"));
-            List<EmployeeOutDTO> employees = employeeService.findByEmail(data.get(("email")));
+        } else if(map.containsKey("email")) {
+            logger.info("Email: " + map.get("email"));
+            List<EmployeeOutDTO> employees = employeeService.findByEmail(map.get(("email")));
             logger.info("Showing all employees by email");
             return ResponseEntity.ok(employees);
-        } else if((data.containsKey("paid"))) {
-            if (data.get("boss").equals("true")) {
+        } else if((map.containsKey("boss"))) {
+            if (map.get("boss").equals("true")) {
                 List<EmployeeOutDTO> employees = employeeService.findByBoss(Boolean.TRUE);
                 logger.info("Showing all employees by Boss TRUE");
                 return ResponseEntity.ok(employees);
             }
-            if (data.get("boss").equals("false")) {
+            if (map.get("boss").equals("false")) {
                 List<EmployeeOutDTO> employees = employeeService.findByBoss(Boolean.FALSE);
                 logger.info("Showing all employees by Boss FALSE");
                 return ResponseEntity.ok(employees);
             } else {
-                logger.error("Bad Request");
+                logger.error("Bad Request 1 ");
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             }
         }
@@ -68,13 +72,6 @@ public class EmployeeController {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    @GetMapping("/employees/{id}")
-    public ResponseEntity<Employee> getEmployee(@PathVariable long id) throws EmployeeNotFoundException {
-        logger.info("Showing employees by ID");
-        Employee employee = employeeService.findById(id);
-        logger.info("GET END");
-        return ResponseEntity.ok(employee);
-    }
 
     @PostMapping("/employees")
     public ResponseEntity<Employee> addEmployee(@RequestBody EmployeeInDTO employeeInDTO){
@@ -95,9 +92,11 @@ public class EmployeeController {
     @PutMapping("/employees/{id}")
     public ResponseEntity<Employee> modifyEmployee(@PathVariable long id, @RequestBody Employee employee) throws EmployeeNotFoundException {
         logger.info("PUT modify employee");
-        Employee newEmployee = employeeService.modifyEmployee(id, employee);
+
+        Employee modEmployee = employeeService.modifyEmployee(id, employee);
         logger.info("PUT END");
-        return ResponseEntity.status(HttpStatus.OK).body(newEmployee);
+
+        return ResponseEntity.status(HttpStatus.OK).body(modEmployee);
     }
 
     @ExceptionHandler(EmployeeNotFoundException.class)

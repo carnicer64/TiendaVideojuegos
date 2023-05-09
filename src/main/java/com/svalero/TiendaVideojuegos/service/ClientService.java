@@ -11,11 +11,13 @@ public interface ClientService {
 
     List<ClientOutDTO> findAll();
 
-    Client findById(long idClient) throws ClientNotFoundException;
+    ClientOutDTO findById(long idClient) throws ClientNotFoundException;
 
     Client addClient(ClientInDTO clientInDTO);
 
     void deleteClient(long idClient) throws ClientNotFoundException;
 
     Client modifyClient(long id, ClientInDTO clientInDTO) throws ClientNotFoundException;
+
+    List<ClientOutDTO> findByName(String name);
 }

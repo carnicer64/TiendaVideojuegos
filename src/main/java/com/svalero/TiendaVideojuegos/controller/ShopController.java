@@ -15,6 +15,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,14 +36,20 @@ public class ShopController {
         if (data.isEmpty()) {
             logger.info("Showing all shops");
             return ResponseEntity.ok(shopService.findAll());
-        } else if(data.containsKey("name")) {
+        } else if(data.containsKey("id")) {
+            logger.info("id: " + data.get("id"));
+            List<ShopOutDTO> shop = new ArrayList<>();
+            shop.add(shopService.findById(Long.parseLong(data.get(("id")))));
+            logger.info("Showing all shops by ID");
+            return ResponseEntity.ok(shop);
+        }else if(data.containsKey("name")) {
             logger.info("Name: " + data.get("name"));
             List<ShopOutDTO> shop = shopService.findByName(data.get(("name")));
             logger.info("Showing all shops by name");
             return ResponseEntity.ok(shop);
         } else if(data.containsKey("adress")) {
             logger.info("Adress: " + data.get("adress"));
-            List<ShopOutDTO> shop = shopService.findByAdress(data.get(("shop")));
+            List<ShopOutDTO> shop = shopService.findByAdress(data.get(("adress")));
             logger.info("Showing all shops by adress");
             return ResponseEntity.ok(shop);
         } else if(data.containsKey("tlf")) {
@@ -55,15 +62,16 @@ public class ShopController {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    @GetMapping("/shops/{id}")
-    public ResponseEntity<Shop> getProduct(@PathVariable long id) throws ShopNotFoundException {
-        logger.info("Showing all products by ID");
-        Shop shop = shopService.findById(id);
-        logger.info("GET END");
-        return ResponseEntity.ok(shop);
-    }
+    //@GetMapping("/shops/{id}")
+    //public ResponseEntity<Shop> getProduct(@PathVariable long id) throws ShopNotFoundException {
+    //    logger.info("Showing all products by ID");
+    //    Shop shop = shopService.findById(id);
+    //    logger.info("GET END");
+    //    return ResponseEntity.ok(shop);
+    //}
 
     //Pasamos el ID DE EMPLEADO
+    //TODO: pasar a employees
     @GetMapping ("/employees/{id}/shops")
     public ResponseEntity<Shop> getShopByEmployee(@PathVariable long id){
         logger.info("GET Shop by Employee");
@@ -73,15 +81,15 @@ public class ShopController {
     }
 
     //Pasamos el ID DE EMPLEADO
-    @PostMapping("/employees/{id}/shops")
-    public ResponseEntity<Shop> addShop(@PathVariable long id, @RequestBody ShopInDTO shopInDTO) throws EmployeeNotFoundException{
-        logger.info("POST Adding shop");
-        Shop shop = shopService.addShop(id, shopInDTO);
+    @PostMapping("/shops")
+    public ResponseEntity<Shop> addShop(@RequestBody ShopInDTO shopInDTO) throws EmployeeNotFoundException{
+        logger.info("POST Adding shop" + shopInDTO);
+        Shop shop = shopService.addShop(shopInDTO);
         logger.info("POST END");
         return ResponseEntity.status(HttpStatus.OK).body(shop);
     }
 
-    @DeleteMapping("/shops")
+    @DeleteMapping("/shops/{id}")
     public ResponseEntity<Void> deleteShop(@PathVariable long id) throws ShopNotFoundException {
         logger.info("DELETE shop");
         shopService.deleteShop(id);
@@ -91,8 +99,10 @@ public class ShopController {
 
     @PutMapping("/shops/{id}")
     public ResponseEntity<Shop> modifyShop(@PathVariable long id, @RequestBody Shop shop) throws ShopNotFoundException {
+        logger.info("PUT modify Shop");
 
         Shop modShop = shopService.modifyShop(id, shop);
+        logger.info("PUT END");
 
         return ResponseEntity.status(HttpStatus.OK).body(modShop);
     }

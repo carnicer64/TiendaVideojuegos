@@ -11,9 +11,9 @@ public interface OrderLineRepository extends CrudRepository<OrderLine, Long> {
     
     List<OrderLine> findAll();
 
-    List<OrderLine> findByStock_Id(long id);
+    OrderLine findByStock_Id(long id);
 
-    List<OrderLine> findByOrder_Id(long id);
+    OrderLine findByOrder_Id(long id);
 
     List<OrderLine> findByAmount(String amount);
 

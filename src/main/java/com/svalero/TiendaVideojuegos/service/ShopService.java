@@ -17,12 +17,12 @@ public interface ShopService {
 
     List<ShopOutDTO> findByTlf(String s);
 
-    Shop findById(long id) throws ShopNotFoundException;
+    ShopOutDTO findById(long id) throws ShopNotFoundException;
 
     Shop findByEmployee(long id);
 
 
-    Shop addShop(long id, ShopInDTO shopInDTO) throws EmployeeNotFoundException;
+    Shop addShop(ShopInDTO shopInDTO) throws EmployeeNotFoundException;
 
     void deleteShop(long id) throws ShopNotFoundException;
 

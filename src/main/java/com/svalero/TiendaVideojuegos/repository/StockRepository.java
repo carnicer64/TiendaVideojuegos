@@ -16,5 +16,7 @@ public interface StockRepository extends CrudRepository<Stock, Long> {
 
     List<Stock> findByProduct_Id(long id);
 
-    Stock findByShop_Id(long id);
+    List<Stock> findByShop_Id(long id);
+
+    List<Stock> findByAmount(int amount);
 }

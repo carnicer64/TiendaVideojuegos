@@ -3,6 +3,7 @@ package com.svalero.TiendaVideojuegos.service;
 import com.svalero.TiendaVideojuegos.domain.Product;
 import com.svalero.TiendaVideojuegos.domain.dto.ProductInDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.ProductOutDTO;
+import com.svalero.TiendaVideojuegos.domain.dto.ShopOutDTO;
 import com.svalero.TiendaVideojuegos.exception.ProductNotFoundException;
 import com.svalero.TiendaVideojuegos.repository.ProductRepository;
 import org.modelmapper.ModelMapper;
@@ -45,7 +46,7 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public List<ProductOutDTO> findByCost(String cost) {
+    public List<ProductOutDTO> findByCost(double cost) {
         logger.info("Cost price: " + cost);
         List<Product> products = productRepository.findByCost(cost);
         List<ProductOutDTO> productOutDTO = modelMapper.map(products, new TypeToken<List<ProductOutDTO>>() {}.getType());
@@ -53,18 +54,27 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public List<ProductOutDTO> findBySale(String sale) {
+    public List<ProductOutDTO> findBySale(double sale) {
         logger.info("Sale price: " + sale);
+
         List<Product> products = productRepository.findBySale(sale);
+        logger.info("Product: " + products);
+
         List<ProductOutDTO> productOutDTO = modelMapper.map(products, new TypeToken<List<ProductOutDTO>>() {}.getType());
+
+        logger.info("ProductOutDTO: " + productOutDTO);
+
         return productOutDTO;
     }
 
     @Override
-    public Product findById(long id) throws ProductNotFoundException {
+    public ProductOutDTO findById(long id) throws ProductNotFoundException {
         logger.info("ID: " + id);
 
-        return productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
+        Product product = productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
+        ProductOutDTO productOutDTO = modelMapper.map(product, new TypeToken<ProductOutDTO>() {}.getType());
+
+        return productOutDTO;
     }
 
     @Override
@@ -86,11 +96,14 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public Product modifyProduct(long id, Product product) throws ProductNotFoundException {
-        Product existingProduct = productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
+        logger.info("Modifying the product");
 
-        modelMapper.map(product, existingProduct);
-        existingProduct.setId(id);
+        Product modProduct = productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
 
-        return productRepository.save(existingProduct);
+        modelMapper.map(product, modProduct);
+        modProduct.setId(id);
+
+
+        return productRepository.save(modProduct);
     }
 }

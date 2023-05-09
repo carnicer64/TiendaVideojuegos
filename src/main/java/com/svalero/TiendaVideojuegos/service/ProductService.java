@@ -13,11 +13,11 @@ public interface ProductService {
 
     List<ProductOutDTO> findByName(String name);
 
-    List<ProductOutDTO> findByCost(String cost);
+    List<ProductOutDTO> findByCost(double cost);
 
-    List<ProductOutDTO> findBySale(String sale);
+    List<ProductOutDTO> findBySale(double sale);
 
-    Product findById(long id) throws ProductNotFoundException;
+    ProductOutDTO findById(long id) throws ProductNotFoundException;
 
     Product addProduct(ProductInDTO productInDTO);
 

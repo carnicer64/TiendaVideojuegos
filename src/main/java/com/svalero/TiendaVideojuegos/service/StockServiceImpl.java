@@ -3,6 +3,7 @@ package com.svalero.TiendaVideojuegos.service;
 import com.svalero.TiendaVideojuegos.domain.Product;
 import com.svalero.TiendaVideojuegos.domain.Shop;
 import com.svalero.TiendaVideojuegos.domain.Stock;
+import com.svalero.TiendaVideojuegos.domain.dto.ShopOutDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.StockInDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.StockOutDTO;
 import com.svalero.TiendaVideojuegos.exception.ProductNotFoundException;
@@ -54,32 +55,41 @@ public class StockServiceImpl implements StockService{
     }
 
     @Override
-    public List<StockOutDTO> findByAmount(String amount) {
+    public List<StockOutDTO> findByAmount(int amount) {
         logger.info("Amount: " + amount);
-        List<Stock> stocks = stockRepository.findByNote(amount);
+        List<Stock> stocks = stockRepository.findByAmount(amount);
         List<StockOutDTO> stockOutDTO = modelMapper.map(stocks, new TypeToken<List<StockOutDTO>>() {}.getType());
         return stockOutDTO;
     }
 
     @Override
-    public Stock findById(long id) throws StockNotFoundException {
+    public StockOutDTO findById(long id) throws StockNotFoundException {
         logger.info("ID: " + id);
 
-        return stockRepository.findById(id).orElseThrow(StockNotFoundException::new);
+        Stock stock = stockRepository.findById(id).orElseThrow(StockNotFoundException::new);
+        StockOutDTO stockOutDTO = modelMapper.map(stock, new TypeToken<StockOutDTO>() {}.getType());
+
+        return stockOutDTO;
     }
 
     @Override
-    public List<Stock> findByProduct(long id) {
+    public List<StockOutDTO> findByProduct(long id) {
         logger.info("IDProduct: " + id);
 
-        return stockRepository.findByProduct_Id(id);
+        List<Stock> stocks = stockRepository.findByProduct_Id(id);
+        List<StockOutDTO> stockOutDTO = modelMapper.map(stocks, new TypeToken<List<StockOutDTO>>() {}.getType());
+
+        return stockOutDTO;
     }
 
     @Override
-    public Stock findByShop(long id) {
+    public List<StockOutDTO> findByShop(long id) {
         logger.info("IDShop: " + id);
 
-        return stockRepository.findByShop_Id(id);
+        List<Stock> stocks = stockRepository.findByShop_Id(id);
+        List<StockOutDTO> stockOutDTO = modelMapper.map(stocks, new TypeToken<List<StockOutDTO>>() {}.getType());
+
+        return stockOutDTO;
     }
 
     @Override
@@ -89,8 +99,9 @@ public class StockServiceImpl implements StockService{
         Stock newStock = new Stock();
         modelMapper.map(stockInDTO, newStock);
 
-        Product product = productRepository.findById(stockInDTO.getProduct().getId()).orElseThrow(ProductNotFoundException::new);
-        Shop shop = shopRepository.findById(stockInDTO.getShop().getId()).orElseThrow(ShopNotFoundException::new);
+        logger.info("newStock" + newStock);
+        Product product = productRepository.findById(newStock.getProduct().getId()).orElseThrow(ProductNotFoundException::new);
+        Shop shop = shopRepository.findById(newStock.getShop().getId()).orElseThrow(ShopNotFoundException::new);
 
         newStock.setProduct(product);
         newStock.setShop(shop);
@@ -109,11 +120,11 @@ public class StockServiceImpl implements StockService{
     public Stock modifyStock(long id, Stock stock) throws StockNotFoundException{
         logger.info("Modifying stock");
 
-        Stock existingStock = stockRepository.findById(id).orElseThrow(StockNotFoundException::new);
+        Stock modStock = stockRepository.findById(id).orElseThrow(StockNotFoundException::new);
 
-        modelMapper.map(stock, existingStock);
-        existingStock.setId(id);
+        modelMapper.map(stock, modStock);
+        modStock.setId(id);
 
-        return stockRepository.save(existingStock);
+        return stockRepository.save(modStock);
     }
 }

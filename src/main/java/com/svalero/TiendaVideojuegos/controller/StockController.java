@@ -3,6 +3,7 @@ package com.svalero.TiendaVideojuegos.controller;
 import com.svalero.TiendaVideojuegos.Util.ErrorMessage;
 import com.svalero.TiendaVideojuegos.domain.Shop;
 import com.svalero.TiendaVideojuegos.domain.Stock;
+import com.svalero.TiendaVideojuegos.domain.dto.ProductOutDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.ShopInDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.StockInDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.StockOutDTO;
@@ -20,6 +21,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,60 +36,77 @@ public class StockController {
 
 
     @GetMapping("/stocks")
-    public ResponseEntity<List<StockOutDTO>> getStocks(@RequestParam Map<String, String> data) {
+    public ResponseEntity<List<StockOutDTO>> getStocks(@RequestParam Map<String, String> data) throws StockNotFoundException{
         logger.info("GET Shops");
 
         if (data.isEmpty()) {
             logger.info("Showing all stocks");
             return ResponseEntity.ok(stockService.findAll());
+        } else if(data.containsKey("id")) {
+            logger.info("id: " + data.get("id"));
+            List<StockOutDTO> stock = new ArrayList<>();
+            stock.add(stockService.findById(Long.parseLong(data.get(("id")))));
+            logger.info("Showing all stock by ID");
+            return ResponseEntity.ok(stock);
+        } else if(data.containsKey("idProduct")) {
+            logger.info("idProduct: " + data.get("idProduct"));
+            List<StockOutDTO> stock = stockService.findByProduct(Long.parseLong(data.get(("idProduct"))));
+            logger.info("Showing all stock by product ID");
+            return ResponseEntity.ok(stock);
+        } else if(data.containsKey("idShop")) {
+            logger.info("idShop: " + data.get("idShop"));
+            List<StockOutDTO> stock = stockService.findByShop(Long.parseLong(data.get(("idShop"))));
+            logger.info("Showing all stock by shop ID");
+            return ResponseEntity.ok(stock);
         } else if(data.containsKey("amount")) {
             logger.info("Amount: " + data.get("Amount"));
-            List<StockOutDTO> stock = stockService.findByAmount(data.get(("amount")));
-            logger.info("Showing all shops by amount");
+            List<StockOutDTO> stock = stockService.findByAmount(Integer.parseInt(data.get(("amount"))));
+            logger.info("Showing all stock by amount");
             return ResponseEntity.ok(stock);
         } else if(data.containsKey("note")) {
             logger.info("Note: " + data.get("note"));
             List<StockOutDTO> stock = stockService.findByNote(data.get(("stock")));
-            logger.info("Showing all shops by note");
+            logger.info("Showing all stock by note");
             return ResponseEntity.ok(stock);
         }
         logger.info("Bad Request");
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    @GetMapping("/stocks/{id}")
+    /*@GetMapping("/stocks/{id}")
     public ResponseEntity<Stock> getStock(@PathVariable long id) throws StockNotFoundException {
         logger.info("Showing all stock by ID");
         Stock stock = stockService.findById(id);
         logger.info("GET END");
         return ResponseEntity.ok(stock);
-    }
+    }*/
 
-    @GetMapping ("/products/{id}/stocks")
+    /*@GetMapping ("/stocks")
     public ResponseEntity<List<Stock>> getStockByProduct(@PathVariable long id){
         logger.info("GET Stock by product id");
         List<Stock> stock = stockService.findByProduct(id);
         logger.info("GET END");
         return ResponseEntity.ok(stock);
-    }
+    }*/
 
-    @GetMapping ("/shops/{id}/stocks")
+    /*@GetMapping ("/stocks")
     public ResponseEntity<Stock> getStockByShop(@PathVariable long id){
         logger.info("GET Stock by shop id");
         Stock stock = stockService.findByShop(id);
         logger.info("GET END");
         return ResponseEntity.ok(stock);
-    }
+    }*/
 
-    @PostMapping("/stocks/{id}")
+    @PostMapping("/stocks")
     public ResponseEntity<Stock> addStock(@RequestBody StockInDTO stockInDTO) throws ProductNotFoundException, ShopNotFoundException {
         logger.info("POST Adding stock");
+        logger.info("StockIn" + stockInDTO);
         Stock stock = stockService.addStock(stockInDTO);
         logger.info("POST END");
         return ResponseEntity.status(HttpStatus.OK).body(stock);
     }
 
-    @DeleteMapping("/stock")
+    @DeleteMapping("/stocks/{id}")
     public ResponseEntity<Void> deleteStock(@PathVariable long id) throws StockNotFoundException {
         logger.info("DELETE stock");
         stockService.deleteStock(id);
@@ -95,7 +114,7 @@ public class StockController {
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/stock/{id}")
+    @PutMapping("/stocks/{id}")
     public ResponseEntity<Stock> modifyStock(@PathVariable long id, @RequestBody Stock stock) throws StockNotFoundException {
         logger.info("PUT modify Stock");
         Stock modStock = stockService.modifyStock(id, stock);
