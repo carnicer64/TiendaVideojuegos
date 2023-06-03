@@ -6781,3 +6781,5 @@ java.lang.IllegalArgumentException: Invalid character found in method name [0x16
 2023-05-09 20:59:05,686 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
 2023-05-09 20:59:05,734 INFO com.svalero.TiendaVideojuegos.controller.OrderLineController [http-nio-8080-exec-1] DELETE Order Line
 2023-05-09 20:59:05,875 INFO com.svalero.TiendaVideojuegos.controller.OrderLineController [http-nio-8080-exec-1] DELETE END
+2023-05-09 21:01:43,912 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-05-09 21:01:43,971 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.

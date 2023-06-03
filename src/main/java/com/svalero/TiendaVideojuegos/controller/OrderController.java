@@ -2,10 +2,8 @@ package com.svalero.TiendaVideojuegos.controller;
 
 import com.svalero.TiendaVideojuegos.Util.ErrorMessage;
 import com.svalero.TiendaVideojuegos.domain.Order;
-import com.svalero.TiendaVideojuegos.domain.dto.ClientOutDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.OrderInDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.OrderOutDTO;
-import com.svalero.TiendaVideojuegos.domain.dto.StockOutDTO;
 import com.svalero.TiendaVideojuegos.exception.ClientNotFoundException;
 import com.svalero.TiendaVideojuegos.exception.OrderNotFoundException;
 import com.svalero.TiendaVideojuegos.service.OrderService;

@@ -3,7 +3,6 @@ package com.svalero.TiendaVideojuegos.service;
 import com.svalero.TiendaVideojuegos.domain.Product;
 import com.svalero.TiendaVideojuegos.domain.Shop;
 import com.svalero.TiendaVideojuegos.domain.Stock;
-import com.svalero.TiendaVideojuegos.domain.dto.ShopOutDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.StockInDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.StockOutDTO;
 import com.svalero.TiendaVideojuegos.exception.ProductNotFoundException;

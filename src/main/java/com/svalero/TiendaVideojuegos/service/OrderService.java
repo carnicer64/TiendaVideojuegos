@@ -1,6 +1,5 @@
 package com.svalero.TiendaVideojuegos.service;
 
-import com.svalero.TiendaVideojuegos.domain.Client;
 import com.svalero.TiendaVideojuegos.domain.Order;
 import com.svalero.TiendaVideojuegos.domain.dto.OrderInDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.OrderOutDTO;

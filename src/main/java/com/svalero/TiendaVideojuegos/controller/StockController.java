@@ -1,13 +1,9 @@
 package com.svalero.TiendaVideojuegos.controller;
 
 import com.svalero.TiendaVideojuegos.Util.ErrorMessage;
-import com.svalero.TiendaVideojuegos.domain.Shop;
 import com.svalero.TiendaVideojuegos.domain.Stock;
-import com.svalero.TiendaVideojuegos.domain.dto.ProductOutDTO;
-import com.svalero.TiendaVideojuegos.domain.dto.ShopInDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.StockInDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.StockOutDTO;
-import com.svalero.TiendaVideojuegos.exception.EmployeeNotFoundException;
 import com.svalero.TiendaVideojuegos.exception.ProductNotFoundException;
 import com.svalero.TiendaVideojuegos.exception.ShopNotFoundException;
 import com.svalero.TiendaVideojuegos.exception.StockNotFoundException;

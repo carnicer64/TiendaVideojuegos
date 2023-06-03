@@ -2,14 +2,9 @@ package com.svalero.TiendaVideojuegos.service;
 
 
 import com.svalero.TiendaVideojuegos.domain.Client;
-import com.svalero.TiendaVideojuegos.domain.Employee;
-import com.svalero.TiendaVideojuegos.domain.Shop;
 import com.svalero.TiendaVideojuegos.domain.dto.ClientInDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.ClientOutDTO;
-import com.svalero.TiendaVideojuegos.domain.dto.EmployeeOutDTO;
-import com.svalero.TiendaVideojuegos.domain.dto.ShopOutDTO;
 import com.svalero.TiendaVideojuegos.exception.ClientNotFoundException;
-import com.svalero.TiendaVideojuegos.exception.ShopNotFoundException;
 import com.svalero.TiendaVideojuegos.repository.ClientRepository;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;

@@ -1,14 +1,9 @@
 package com.svalero.TiendaVideojuegos.controller;
 
-import com.sun.jdi.VoidValue;
 import com.svalero.TiendaVideojuegos.Util.ErrorMessage;
 import com.svalero.TiendaVideojuegos.domain.Product;
-import com.svalero.TiendaVideojuegos.domain.dto.OrderOutDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.ProductInDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.ProductOutDTO;
-import com.svalero.TiendaVideojuegos.domain.dto.ShopOutDTO;
-import com.svalero.TiendaVideojuegos.exception.ClientNotFoundException;
-import com.svalero.TiendaVideojuegos.exception.OrderNotFoundException;
 import com.svalero.TiendaVideojuegos.exception.ProductNotFoundException;
 import com.svalero.TiendaVideojuegos.service.ProductService;
 import org.slf4j.Logger;
