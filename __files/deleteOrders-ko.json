@@ -1,0 +1,6 @@
+{
+  "timestamp": "2023-08-07T07:50:55.084+00:00",
+  "status": 405,
+  "error": "Method Not Allowed",
+  "path": "/orders"
+}

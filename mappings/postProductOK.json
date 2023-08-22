@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/products",
+    "bodyPatterns": [
+      {
+        "equalToJson": "{\n\"name\": \"Cosa4\",\n\"cost\": 2.514,\n\"sale\": 3.01,\n\"barCode\":\"15665\",\n\"imageURL\":\"kijij.com\"\n}\n"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "postProducts-ok.json"
+  }
+}

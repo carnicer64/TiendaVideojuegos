@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -15,9 +16,9 @@ public class OrderOutDTO {
 
     private long id;
     @JsonFormat(pattern="yyyy-MM-dd")
-    private LocalDate pDate;
+    private Date pDate;
     @JsonFormat(pattern="yyyy-MM-dd")
-    private LocalDate dDate;
+    private Date dDate;
     private double orderPrice;
     private String note;
     private Client client;

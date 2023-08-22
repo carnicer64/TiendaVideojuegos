@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "DELETE",
+    "url": "/employee/"
+  },
+  "response": {
+    "status": 405,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "deleteEmployee-ko.json"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/products?name=Cosa1"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "getProducts-ok2.json"
+  }
+}

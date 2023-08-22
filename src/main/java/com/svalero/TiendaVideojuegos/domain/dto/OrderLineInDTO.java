@@ -13,8 +13,6 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class OrderLineInDTO {
 
-
-    private long id;
     private String name;
     private String amount;
     private String price;

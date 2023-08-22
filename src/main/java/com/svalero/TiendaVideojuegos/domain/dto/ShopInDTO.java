@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ShopInDTO {
 
-    private long id;
     private String name;
     private String adress;
     private String tlf;

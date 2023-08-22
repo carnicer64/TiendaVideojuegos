@@ -1,0 +1,10 @@
+{
+  "id": 2,
+  "pDate": "2023-01-01",
+  "dDate": "2023-01-05",
+  "orderPrice": 59.36,
+  "note": "in good state",
+  "client": {
+    "id": "10"
+  }
+}

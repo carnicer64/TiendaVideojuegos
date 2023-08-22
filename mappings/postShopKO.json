@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/shops",
+    "bodyPatterns": [
+      {
+        "equalToJson": "{\n\"name\": \"Tienda3\",\n\"adress\": \"\",\n\"tlf\": \"976625863\",\n\"latitude\": \"15646456\",\n\"longitude\": \"3131212\",\n\"employee\": {\n\"id\": \"6\"\n}\n}"
+      }
+    ]
+  },
+  "response": {
+    "status": 500,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "postShops-ko.json"
+  }
+}

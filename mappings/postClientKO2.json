@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/clients",
+    "bodyPatterns": [
+      {
+        "equalToJson": "{\n\"name\": \"\",\n\"adress\": \"Calle 12\",\n\"email\": \"email@email.com\",\n\"tlf\": \"9786767\",\n\"nif\": \"dasdasdasd\"\n}"
+      }
+    ]
+  },
+  "response": {
+    "status": 500,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "postClients-ko2.json"
+  }
+}

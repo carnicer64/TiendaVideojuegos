@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/employees",
+    "bodyPatterns": [
+      {
+        "equalToJson": "{\n\"name\": \"\",\n\"email\": \"email@email.com\",\n\"boss\": true\n}"
+      }
+    ]
+  },
+  "response": {
+    "status": 500,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "postEmployees-ko.json"
+  }
+}

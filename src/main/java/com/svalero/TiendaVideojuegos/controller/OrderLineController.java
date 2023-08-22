@@ -1,6 +1,7 @@
 package com.svalero.TiendaVideojuegos.controller;
 
-import com.svalero.TiendaVideojuegos.Util.ErrorMessage;
+import com.svalero.TiendaVideojuegos.Util.ErrorMessageUtil;
+import com.svalero.TiendaVideojuegos.exception.ErrorMessage;
 import com.svalero.TiendaVideojuegos.domain.OrderLine;
 import com.svalero.TiendaVideojuegos.domain.dto.OrderLineInDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.OrderLineOutDTO;
@@ -15,6 +16,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.ConstraintViolationException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -60,7 +62,7 @@ public class OrderLineController {
             logger.info("Showing all order lines by amount");
             return ResponseEntity.ok(oLines);
         } else if(data.containsKey("name")) {
-            logger.info("Product name: " + data.get("name"));
+            logger.info("Orderline name: " + data.get("name"));
             List<OrderLineOutDTO> oLines = orderLineService.findByName(data.get(("name")));
             logger.info("Showing all order lines by name");
             return ResponseEntity.ok(oLines);
@@ -163,6 +165,12 @@ public class OrderLineController {
         logger.error(exception.getMessage(), exception);
         ErrorMessage errorMessage = new ErrorMessage(500, "Internal Server Error");
         return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<ErrorMessage> handleConstraintViolationException(ConstraintViolationException cve){
+        logger.error("Constraint violation");
+        return ErrorMessageUtil.getErrorExceptionResponseEntity(cve);
     }
 
 }

@@ -1,0 +1,223 @@
+2023-08-05 09:42:33,087 INFO org.springframework.boot.StartupInfoLogger [main] Starting TiendaVideojuegosApplication using Java 17.0.7 on MacBook-Pro-de-Adrian.local with PID 41217 (/Users/adrian/2-asignaturas/Acceso-a-datos/1/TiendaVideojuegos/target/classes started by adrian in /Users/adrian/2-asignaturas/Acceso-a-datos/1/TiendaVideojuegos)
+2023-08-05 09:42:33,092 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-08-05 09:42:35,481 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2023-08-05 09:42:35,482 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2023-08-05 09:42:35,483 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-08-05 09:42:35,622 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2023-08-05 09:42:36,402 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2023-08-05 09:42:37,004 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-08-05 09:42:38,932 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-05 09:42:39,914 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2023-08-05 09:42:39,926 WARN org.springframework.context.support.AbstractApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+2023-08-05 09:42:39,936 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Shutdown initiated...
+2023-08-05 09:42:39,949 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Shutdown completed.
+2023-08-05 09:42:39,951 INFO org.apache.juli.logging.DirectJDKLog [main] Pausing ProtocolHandler ["http-nio-8080"]
+2023-08-05 09:42:39,951 INFO org.apache.juli.logging.DirectJDKLog [main] Stopping service [Tomcat]
+2023-08-05 09:42:39,955 INFO org.apache.juli.logging.DirectJDKLog [main] Stopping ProtocolHandler ["http-nio-8080"]
+2023-08-05 09:42:39,956 INFO org.apache.juli.logging.DirectJDKLog [main] Destroying ProtocolHandler ["http-nio-8080"]
+2023-08-05 09:42:39,988 ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter [main] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2023-08-05 09:43:32,868 INFO org.springframework.boot.StartupInfoLogger [main] Starting TiendaVideojuegosApplication using Java 17.0.7 on MacBook-Pro-de-Adrian.local with PID 41260 (/Users/adrian/2-asignaturas/Acceso-a-datos/1/TiendaVideojuegos/target/classes started by adrian in /Users/adrian/2-asignaturas/Acceso-a-datos/1/TiendaVideojuegos)
+2023-08-05 09:43:32,872 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-08-05 09:43:35,058 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2023-08-05 09:43:35,059 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2023-08-05 09:43:35,059 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-08-05 09:43:35,169 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2023-08-05 09:43:35,900 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2023-08-05 09:43:36,322 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-08-05 09:43:38,115 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-05 09:43:39,044 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2023-08-05 09:43:39,078 INFO org.springframework.boot.StartupInfoLogger [main] Started TiendaVideojuegosApplication in 6.907 seconds (JVM running for 7.736)
+2023-08-05 09:44:59,671 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-08-05 09:44:59,692 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-08-05 10:05:50,630 INFO org.springframework.boot.StartupInfoLogger [main] Starting TiendaVideojuegosApplication using Java 17.0.7 on MacBook-Pro-de-Adrian.local with PID 41363 (/Users/adrian/2-asignaturas/Acceso-a-datos/1/TiendaVideojuegos/target/classes started by adrian in /Users/adrian/2-asignaturas/Acceso-a-datos/1/TiendaVideojuegos)
+2023-08-05 10:05:50,638 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-08-05 10:05:52,840 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2023-08-05 10:05:52,841 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2023-08-05 10:05:52,841 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-08-05 10:05:52,956 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2023-08-05 10:05:53,763 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2023-08-05 10:05:54,307 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-08-05 10:05:56,130 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-05 10:05:57,559 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2023-08-05 10:05:57,603 INFO org.springframework.boot.StartupInfoLogger [main] Started TiendaVideojuegosApplication in 7.851 seconds (JVM running for 8.729)
+2023-08-05 10:06:17,666 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-08-05 10:06:17,701 WARN org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver [http-nio-8080-exec-1] Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'DELETE' not supported]
+2023-08-05 10:10:51,225 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-08-05 10:10:51,242 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-08-05 10:54:20,054 INFO org.springframework.boot.StartupInfoLogger [main] Starting TiendaVideojuegosApplication using Java 17.0.7 on MacBook-Pro-de-Adrian.local with PID 41570 (/Users/adrian/2-asignaturas/Acceso-a-datos/1/TiendaVideojuegos/target/classes started by adrian in /Users/adrian/2-asignaturas/Acceso-a-datos/1/TiendaVideojuegos)
+2023-08-05 10:54:20,059 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-08-05 10:54:22,086 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2023-08-05 10:54:22,087 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2023-08-05 10:54:22,088 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-08-05 10:54:22,206 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2023-08-05 10:54:22,991 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2023-08-05 10:54:23,534 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-08-05 10:54:25,340 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-05 10:54:26,248 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2023-08-05 10:54:26,287 INFO org.springframework.boot.StartupInfoLogger [main] Started TiendaVideojuegosApplication in 6.957 seconds (JVM running for 7.58)
+2023-08-05 10:54:46,427 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-08-05 10:54:46,481 INFO com.svalero.TiendaVideojuegos.controller.EmployeeController [http-nio-8080-exec-2] GET Employee
+2023-08-05 10:54:46,482 INFO com.svalero.TiendaVideojuegos.controller.EmployeeController [http-nio-8080-exec-2] Showing all employees
+2023-08-05 11:20:44,118 INFO com.svalero.TiendaVideojuegos.controller.EmployeeController [http-nio-8080-exec-4] POST Adding employee
+2023-08-05 11:20:44,121 INFO com.svalero.TiendaVideojuegos.service.EmployeeServiceImpl [http-nio-8080-exec-4] Creating the employee
+2023-08-05 11:20:44,342 INFO com.svalero.TiendaVideojuegos.controller.EmployeeController [http-nio-8080-exec-4] POST END
+2023-08-05 11:37:18,549 INFO com.svalero.TiendaVideojuegos.controller.EmployeeController [http-nio-8080-exec-7] POST Adding employee
+2023-08-05 11:37:18,557 INFO com.svalero.TiendaVideojuegos.service.EmployeeServiceImpl [http-nio-8080-exec-7] Creating the employee
+2023-08-05 11:37:18,724 ERROR com.svalero.TiendaVideojuegos.controller.EmployeeController [http-nio-8080-exec-7] Constraint violation
+2023-08-05 11:37:18,730 ERROR com.svalero.TiendaVideojuegos.Util.ErrorMessageUtil [http-nio-8080-exec-7] El nombre no puede estar vacio
+2023-08-05 11:42:56,497 INFO com.svalero.TiendaVideojuegos.controller.EmployeeController [http-nio-8080-exec-10] POST Adding employee
+2023-08-05 11:42:56,499 INFO com.svalero.TiendaVideojuegos.service.EmployeeServiceImpl [http-nio-8080-exec-10] Creating the employee
+2023-08-05 11:42:56,509 ERROR com.svalero.TiendaVideojuegos.controller.EmployeeController [http-nio-8080-exec-10] Constraint violation
+2023-08-05 11:42:56,510 ERROR com.svalero.TiendaVideojuegos.Util.ErrorMessageUtil [http-nio-8080-exec-10] El nombre no puede estar vacio
+2023-08-05 11:42:56,511 ERROR com.svalero.TiendaVideojuegos.Util.ErrorMessageUtil [http-nio-8080-exec-10] El nombre es obligatorio
+2023-08-05 11:46:47,787 INFO com.svalero.TiendaVideojuegos.controller.EmployeeController [http-nio-8080-exec-1] PUT modify employee
+2023-08-05 11:46:47,877 INFO com.svalero.TiendaVideojuegos.controller.EmployeeController [http-nio-8080-exec-1] PUT END
+2023-08-05 11:48:21,274 WARN org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver [http-nio-8080-exec-4] Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PUT' not supported]
+2023-08-05 11:49:26,550 INFO com.svalero.TiendaVideojuegos.controller.EmployeeController [http-nio-8080-exec-7] PUT modify employee
+2023-08-05 11:49:26,569 ERROR com.svalero.TiendaVideojuegos.controller.EmployeeController [http-nio-8080-exec-7] Employee not found
+com.svalero.TiendaVideojuegos.exception.EmployeeNotFoundException: Employee not found
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at com.svalero.TiendaVideojuegos.service.EmployeeServiceImpl.modifyEmployee(EmployeeServiceImpl.java:95)
+	at com.svalero.TiendaVideojuegos.controller.EmployeeController.modifyEmployee(EmployeeController.java:98)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPut(FrameworkServlet.java:920)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:558)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-08-05 11:59:10,174 INFO com.svalero.TiendaVideojuegos.controller.EmployeeController [http-nio-8080-exec-2] DELETE employee
+2023-08-05 11:59:10,205 ERROR com.svalero.TiendaVideojuegos.controller.EmployeeController [http-nio-8080-exec-2] Employee not found
+com.svalero.TiendaVideojuegos.exception.EmployeeNotFoundException: Employee not found
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at com.svalero.TiendaVideojuegos.service.EmployeeServiceImpl.deleteEmployee(EmployeeServiceImpl.java:87)
+	at com.svalero.TiendaVideojuegos.controller.EmployeeController.deleteEmployee(EmployeeController.java:89)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doDelete(FrameworkServlet.java:931)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:561)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-08-05 11:59:17,124 INFO com.svalero.TiendaVideojuegos.controller.EmployeeController [http-nio-8080-exec-1] DELETE employee
+2023-08-05 11:59:17,139 INFO com.svalero.TiendaVideojuegos.service.EmployeeServiceImpl [http-nio-8080-exec-1] Employee deleted
+2023-08-05 11:59:17,262 INFO com.svalero.TiendaVideojuegos.controller.EmployeeController [http-nio-8080-exec-1] DELETE END
+2023-08-05 12:00:08,763 WARN org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver [http-nio-8080-exec-3] Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'DELETE' not supported]
+2023-08-05 12:26:39,620 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m15s245ms).
+2023-08-05 12:35:10,464 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m832ms).
+2023-08-05 12:49:02,876 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=11m52s383ms).
+2023-08-05 13:20:59,012 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=30m25s318ms).
+2023-08-05 13:40:22,704 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=17m53s293ms).
+2023-08-05 13:56:38,894 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=15m46s182ms).
+2023-08-05 14:19:29,236 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=22m20s322ms).
+2023-08-05 14:51:22,914 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=30m23s654ms).
+2023-08-05 15:08:06,895 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=15m43s970ms).
+2023-08-05 15:53:49,218 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=45m12s319ms).
+2023-08-05 17:12:26,808 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h18m7s561ms).
+2023-08-05 18:17:22,821 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h2m55s999ms).
+2023-08-05 18:27:56,318 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9m3s486ms).
+2023-08-05 18:55:07,116 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=26m40s794ms).
+2023-08-05 19:14:05,697 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=18m28s576ms).
+2023-08-05 20:06:40,266 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=52m34s568ms).
+2023-08-05 20:50:05,024 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=41m23s881ms).
+2023-08-05 21:08:13,493 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=17m38s466ms).
+2023-08-05 23:10:08,029 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h24s519ms).

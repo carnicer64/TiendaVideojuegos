@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/orders",
+    "bodyPatterns": [
+      {
+        "equalToJson": "{\n\"pDate\": \"2023-05-23\",\n\"dDate\": \"2023-05-27\",\n\"orderPrice\": 59.36,\n\"note\": \"in good state\",\n\"client\": {\n\"id\": \"10\"\n}\n}"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "postOrders-ok.json"
+  }
+}

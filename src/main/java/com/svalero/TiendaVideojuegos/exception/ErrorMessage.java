@@ -1,4 +1,4 @@
-package com.svalero.TiendaVideojuegos.Util;
+package com.svalero.TiendaVideojuegos.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

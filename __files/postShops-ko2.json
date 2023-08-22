@@ -1,0 +1,8 @@
+{
+  "code": 500,
+  "message": "Internal Server Error",
+  "errors": {
+    "La direccion es obligatoria": "La direccion es obligatoria",
+    "La direccion no puede estar vacia": "La direccion no puede estar vacia"
+  }
+}

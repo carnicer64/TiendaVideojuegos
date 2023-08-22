@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "employees?boss=false"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "getEmployees-ok2.json"
+  }
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Pepe",
+    "adress": "Calle 12",
+    "email": "email@email.com",
+    "tlf": "9786767",
+    "nif": "dasdasdasd"
+  },
+  {
+    "id": 3,
+    "name": "Pepe",
+    "adress": "Calle 12",
+    "email": "email@email.com",
+    "tlf": "9786767",
+    "nif": "dasdasdasd"
+  }
+]

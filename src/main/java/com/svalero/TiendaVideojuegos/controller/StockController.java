@@ -1,6 +1,7 @@
 package com.svalero.TiendaVideojuegos.controller;
 
-import com.svalero.TiendaVideojuegos.Util.ErrorMessage;
+import com.svalero.TiendaVideojuegos.Util.ErrorMessageUtil;
+import com.svalero.TiendaVideojuegos.exception.ErrorMessage;
 import com.svalero.TiendaVideojuegos.domain.Stock;
 import com.svalero.TiendaVideojuegos.domain.dto.StockInDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.StockOutDTO;
@@ -17,6 +18,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.ConstraintViolationException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -157,5 +159,11 @@ public class StockController {
         logger.error(exception.getMessage(), exception);
         ErrorMessage errorMessage = new ErrorMessage(500, "Internal Server Error");
         return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<ErrorMessage> handleConstraintViolationException(ConstraintViolationException cve){
+        logger.error("Constraint violation");
+        return ErrorMessageUtil.getErrorExceptionResponseEntity(cve);
     }
 }

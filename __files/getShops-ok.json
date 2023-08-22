@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "name": "Tienda1",
+    "adress": "Calle123",
+    "tlf": "65148",
+    "latitude": "15646456",
+    "longitude": "3131212",
+    "employee": {
+      "id": 6
+    }
+  },
+  {
+    "id": 2,
+    "name": "Tienda2",
+    "adress": "Calle456",
+    "tlf": "1111111",
+    "latitude": "15646456",
+    "longitude": "3131212",
+    "employee": {
+      "id": 6
+    }
+  }
+]

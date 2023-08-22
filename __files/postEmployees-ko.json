@@ -1,0 +1,7 @@
+{
+  "code": 500,
+  "message": "Internal Server Error",
+  "errors": {
+    "El nombre no puede estar vacio": "El nombre no puede estar vacio"
+  }
+}

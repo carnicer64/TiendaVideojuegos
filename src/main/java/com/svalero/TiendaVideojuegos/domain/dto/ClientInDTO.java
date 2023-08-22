@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ClientInDTO {
-
-    private long id;
     private String name;
     private String adress;
     private String email;

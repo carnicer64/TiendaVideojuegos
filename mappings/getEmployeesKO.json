@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/employees?id=10"
+  },
+  "response": {
+    "status": 404,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "employeeNotFound.json"
+  }
+}

@@ -1,0 +1,191 @@
+2023-06-14 20:11:08,269 INFO org.springframework.boot.StartupInfoLogger [main] Starting TiendaVideojuegosApplication using Java 17.0.7 on MacBook-Pro-de-Adrian.local with PID 3751 (/Users/adrian/2-asignaturas/Acceso-a-datos/1/TiendaVideojuegos/target/classes started by adrian in /Users/adrian/2-asignaturas/Acceso-a-datos/1/TiendaVideojuegos)
+2023-06-14 20:11:08,275 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-06-14 20:11:11,578 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-14 20:11:11,579 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2023-06-14 20:11:11,580 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-06-14 20:11:11,749 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2023-06-14 20:11:12,814 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2023-06-14 20:11:13,530 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-06-14 20:11:16,316 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-06-14 20:11:17,690 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2023-06-14 20:11:17,801 INFO org.springframework.boot.StartupInfoLogger [main] Started TiendaVideojuegosApplication in 10.472 seconds (JVM running for 11.745)
+2023-06-14 20:14:57,156 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-14 20:14:57,672 INFO com.svalero.TiendaVideojuegos.controller.ClientController [http-nio-8080-exec-2] Begin POST Client
+2023-06-14 20:14:57,717 INFO com.svalero.TiendaVideojuegos.controller.ClientController [http-nio-8080-exec-2] Client ClientInDTO(id=0, name=Pepe, adress=Calle 12, email=email@email.com, tlf=9786767, nif=dasdasdasd)
+2023-06-14 20:14:57,718 INFO com.svalero.TiendaVideojuegos.service.ClientServiceImpl [http-nio-8080-exec-2] Adding Client
+2023-06-14 20:14:57,742 INFO com.svalero.TiendaVideojuegos.service.ClientServiceImpl [http-nio-8080-exec-2] Client ClientInDTO(id=0, name=Pepe, adress=Calle 12, email=email@email.com, tlf=9786767, nif=dasdasdasd)
+2023-06-14 20:14:57,825 INFO com.svalero.TiendaVideojuegos.service.ClientServiceImpl [http-nio-8080-exec-2] The client was added
+2023-06-14 20:14:57,827 INFO com.svalero.TiendaVideojuegos.service.ClientServiceImpl [http-nio-8080-exec-2] Client Client(id=0, name=Pepe, adress=Calle 12, email=email@email.com, tlf=9786767, nif=dasdasdasd)
+2023-06-14 20:14:58,112 INFO com.svalero.TiendaVideojuegos.controller.ClientController [http-nio-8080-exec-2] End POST Client
+2023-06-14 20:15:10,118 INFO com.svalero.TiendaVideojuegos.controller.ClientController [http-nio-8080-exec-3] Begin POST Client
+2023-06-14 20:15:10,119 INFO com.svalero.TiendaVideojuegos.controller.ClientController [http-nio-8080-exec-3] Client ClientInDTO(id=0, name=Hola, adress=Calle 12, email=email@email.com, tlf=9786767, nif=dasdasdasd)
+2023-06-14 20:15:10,119 INFO com.svalero.TiendaVideojuegos.service.ClientServiceImpl [http-nio-8080-exec-3] Adding Client
+2023-06-14 20:15:10,120 INFO com.svalero.TiendaVideojuegos.service.ClientServiceImpl [http-nio-8080-exec-3] Client ClientInDTO(id=0, name=Hola, adress=Calle 12, email=email@email.com, tlf=9786767, nif=dasdasdasd)
+2023-06-14 20:15:10,121 INFO com.svalero.TiendaVideojuegos.service.ClientServiceImpl [http-nio-8080-exec-3] The client was added
+2023-06-14 20:15:10,121 INFO com.svalero.TiendaVideojuegos.service.ClientServiceImpl [http-nio-8080-exec-3] Client Client(id=0, name=Hola, adress=Calle 12, email=email@email.com, tlf=9786767, nif=dasdasdasd)
+2023-06-14 20:15:10,132 INFO com.svalero.TiendaVideojuegos.controller.ClientController [http-nio-8080-exec-3] End POST Client
+2023-06-14 20:15:28,362 INFO com.svalero.TiendaVideojuegos.controller.ClientController [http-nio-8080-exec-4] Begin DELETE Client
+2023-06-14 20:15:28,363 INFO com.svalero.TiendaVideojuegos.service.ClientServiceImpl [http-nio-8080-exec-4] The client is going to be deleted
+2023-06-14 20:15:28,501 INFO com.svalero.TiendaVideojuegos.service.ClientServiceImpl [http-nio-8080-exec-4] The client was deleted
+2023-06-14 20:15:28,504 INFO com.svalero.TiendaVideojuegos.controller.ClientController [http-nio-8080-exec-4] End DELETE Client
+2023-06-14 20:15:35,072 INFO com.svalero.TiendaVideojuegos.controller.ClientController [http-nio-8080-exec-5] Begin DELETE Client
+2023-06-14 20:15:35,075 INFO com.svalero.TiendaVideojuegos.service.ClientServiceImpl [http-nio-8080-exec-5] The client is going to be deleted
+2023-06-14 20:15:35,092 ERROR com.svalero.TiendaVideojuegos.controller.ClientController [http-nio-8080-exec-5] Client not found
+com.svalero.TiendaVideojuegos.exception.ClientNotFoundException: Client not found
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at com.svalero.TiendaVideojuegos.service.ClientServiceImpl.deleteClient(ClientServiceImpl.java:92)
+	at com.svalero.TiendaVideojuegos.controller.ClientController.deleteClient(ClientController.java:98)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doDelete(FrameworkServlet.java:931)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:561)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-06-14 20:15:35,094 INFO com.svalero.TiendaVideojuegos.controller.ClientController [http-nio-8080-exec-5] Client not found
+2023-06-14 20:16:19,703 INFO com.svalero.TiendaVideojuegos.controller.ClientController [http-nio-8080-exec-6] Begin PUT Client
+2023-06-14 20:16:19,704 INFO com.svalero.TiendaVideojuegos.service.ClientServiceImpl [http-nio-8080-exec-6] Modifying Client
+2023-06-14 20:16:19,721 INFO com.svalero.TiendaVideojuegos.service.ClientServiceImpl [http-nio-8080-exec-6] The client was modified
+2023-06-14 20:16:19,779 INFO com.svalero.TiendaVideojuegos.controller.ClientController [http-nio-8080-exec-6] End PUT Client
+2023-06-14 20:16:39,720 INFO com.svalero.TiendaVideojuegos.controller.ClientController [http-nio-8080-exec-7] GET Client
+2023-06-14 20:16:39,721 INFO com.svalero.TiendaVideojuegos.controller.ClientController [http-nio-8080-exec-7] Showing all clients
+2023-06-14 20:16:39,728 INFO com.svalero.TiendaVideojuegos.service.ClientServiceImpl [http-nio-8080-exec-7] Finding Client
+2023-06-14 20:16:40,191 INFO com.svalero.TiendaVideojuegos.service.ClientServiceImpl [http-nio-8080-exec-7] Client finded
+2023-06-14 20:16:56,366 INFO com.svalero.TiendaVideojuegos.controller.ClientController [http-nio-8080-exec-8] GET Client
+2023-06-14 20:16:56,367 INFO com.svalero.TiendaVideojuegos.controller.ClientController [http-nio-8080-exec-8] id: 15
+2023-06-14 20:16:56,368 INFO com.svalero.TiendaVideojuegos.service.ClientServiceImpl [http-nio-8080-exec-8] Finding Client by id
+2023-06-14 20:16:56,382 INFO com.svalero.TiendaVideojuegos.controller.ClientController [http-nio-8080-exec-8] Showing all clients by ID
+2023-06-14 20:17:12,996 INFO com.svalero.TiendaVideojuegos.controller.ClientController [http-nio-8080-exec-9] GET Client
+2023-06-14 20:17:12,997 INFO com.svalero.TiendaVideojuegos.controller.ClientController [http-nio-8080-exec-9] Name: Adios
+2023-06-14 20:17:12,997 INFO com.svalero.TiendaVideojuegos.service.ClientServiceImpl [http-nio-8080-exec-9] Finding Client by name
+2023-06-14 20:17:12,998 INFO com.svalero.TiendaVideojuegos.service.ClientServiceImpl [http-nio-8080-exec-9] Name: Adios
+2023-06-14 20:17:13,057 INFO com.svalero.TiendaVideojuegos.controller.ClientController [http-nio-8080-exec-9] Showing all products by name
+2023-06-14 20:18:19,296 ERROR com.svalero.TiendaVideojuegos.controller.OrderController [http-nio-8080-exec-2] JSON parse error: Cannot construct instance of `com.svalero.TiendaVideojuegos.domain.Client` (although at least one Creator exists): no int/Int-argument constructor/factory method to deserialize from Number value (15); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot construct instance of `com.svalero.TiendaVideojuegos.domain.Client` (although at least one Creator exists): no int/Int-argument constructor/factory method to deserialize from Number value (15)
+ at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 6, column: 11] (through reference chain: com.svalero.TiendaVideojuegos.domain.dto.OrderInDTO["client"])
+org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot construct instance of `com.svalero.TiendaVideojuegos.domain.Client` (although at least one Creator exists): no int/Int-argument constructor/factory method to deserialize from Number value (15); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot construct instance of `com.svalero.TiendaVideojuegos.domain.Client` (although at least one Creator exists): no int/Int-argument constructor/factory method to deserialize from Number value (15)
+ at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 6, column: 11] (through reference chain: com.svalero.TiendaVideojuegos.domain.dto.OrderInDTO["client"])
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:391)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.read(AbstractJackson2HttpMessageConverter.java:343)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodArgumentResolver.readWithMessageConverters(AbstractMessageConverterMethodArgumentResolver.java:185)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.readWithMessageConverters(RequestResponseBodyMethodProcessor.java:160)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:133)
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:122)
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:179)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:146)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot construct instance of `com.svalero.TiendaVideojuegos.domain.Client` (although at least one Creator exists): no int/Int-argument constructor/factory method to deserialize from Number value (15)
+ at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 6, column: 11] (through reference chain: com.svalero.TiendaVideojuegos.domain.dto.OrderInDTO["client"])
+	at com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:63)
+	at com.fasterxml.jackson.databind.DeserializationContext.reportInputMismatch(DeserializationContext.java:1728)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleMissingInstantiator(DeserializationContext.java:1353)
+	at com.fasterxml.jackson.databind.deser.ValueInstantiator.createFromInt(ValueInstantiator.java:324)
+	at com.fasterxml.jackson.databind.deser.std.StdValueInstantiator.createFromInt(StdValueInstantiator.java:376)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.deserializeFromNumber(BeanDeserializerBase.java:1442)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer._deserializeOther(BeanDeserializer.java:199)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:187)
+	at com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:129)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:392)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:185)
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:323)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4674)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3682)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:380)
+	... 51 common frames omitted
+2023-06-14 20:18:56,855 INFO com.svalero.TiendaVideojuegos.controller.OrderController [http-nio-8080-exec-4] POST Order
+2023-06-14 20:18:56,862 INFO com.svalero.TiendaVideojuegos.controller.OrderController [http-nio-8080-exec-4] orderInDTO OrderInDTO(id=0, pDate=Tue May 23 02:00:00 CEST 2023, dDate=Sat May 27 02:00:00 CEST 2023, orderPrice=59.36, note=in good state, client=Client(id=15, name=null, adress=null, email=null, tlf=null, nif=null))
+2023-06-14 20:18:56,864 INFO com.svalero.TiendaVideojuegos.service.OrderServiceImpl [http-nio-8080-exec-4] Creating Order
+2023-06-14 20:18:56,865 INFO com.svalero.TiendaVideojuegos.service.OrderServiceImpl [http-nio-8080-exec-4] order OrderInDTO(id=0, pDate=Tue May 23 02:00:00 CEST 2023, dDate=Sat May 27 02:00:00 CEST 2023, orderPrice=59.36, note=in good state, client=Client(id=15, name=null, adress=null, email=null, tlf=null, nif=null))
+2023-06-14 20:18:56,871 INFO com.svalero.TiendaVideojuegos.service.OrderServiceImpl [http-nio-8080-exec-4] Order Order(id=0, pDate=Tue May 23 02:00:00 CEST 2023, dDate=Sat May 27 02:00:00 CEST 2023, orderPrice=59.36, note=in good state, client=Client(id=15, name=null, adress=null, email=null, tlf=null, nif=null))
+2023-06-14 20:18:56,906 INFO com.svalero.TiendaVideojuegos.controller.OrderController [http-nio-8080-exec-4] POST Order END
+2023-06-14 20:19:17,658 INFO com.svalero.TiendaVideojuegos.controller.OrderController [http-nio-8080-exec-5] GET Order
+2023-06-14 20:19:17,659 INFO com.svalero.TiendaVideojuegos.controller.OrderController [http-nio-8080-exec-5] id: 5
+2023-06-14 20:19:17,688 INFO com.svalero.TiendaVideojuegos.service.OrderServiceImpl [http-nio-8080-exec-5] ID: 5
+2023-06-14 20:19:17,708 INFO com.svalero.TiendaVideojuegos.controller.OrderController [http-nio-8080-exec-5] Showing all orders by ID
+2023-06-14 20:22:47,978 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-06-14 20:22:47,994 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.

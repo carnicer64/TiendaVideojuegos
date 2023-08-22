@@ -1,0 +1,11 @@
+{
+  "id": 2,
+  "name": "Tienda nueva",
+  "adress": "Calle456",
+  "tlf": "1111111",
+  "latitude": "15646456",
+  "longitude": "3131212",
+  "employee": {
+    "id": 6
+  }
+}

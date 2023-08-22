@@ -1,0 +1,27 @@
+[
+
+  {
+    "id": 1,
+    "name": "Cosa1",
+    "cost": 2.514,
+    "sale": 3.01,
+    "barCode": 12342455665,
+    "imageURL": "kijij.com"
+  },
+  {
+    "id": 2,
+    "name": "Cosa2",
+    "cost": 17.514,
+    "sale": 30.01,
+    "barCode": 123415665,
+    "imageURL": "kijij.com"
+  },
+  {
+    "id": 3,
+    "name": "Cosa3",
+    "cost": 9.514,
+    "sale": 87.01,
+    "barCode": 156698765,
+    "imageURL": "kijij.com"
+  }
+]

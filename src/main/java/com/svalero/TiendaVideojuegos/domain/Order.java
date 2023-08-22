@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Data
@@ -26,6 +28,7 @@ public class Order {
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date dDate;
     @Column(columnDefinition = "double default null")
+
     private double orderPrice;
     @Column
     private String note;

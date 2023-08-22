@@ -13,7 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class OrderInDTO {
 
-    private long id;
+
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date pDate;
     @JsonFormat(pattern="yyyy-MM-dd")

@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "PUT",
+    "url": "/shops/1",
+    "bodyPatterns": [
+      {
+        "equalToJson": "{\n\"name\": \"Tienda nueva\",\n\"adress\": \"Calle456\",\n\"tlf\": \"1111111\",\n\"latitude\": \"15646456\",\n\"longitude\": \"3131212\",\n\"employee\": {\n\"id\": \"6\"\n}\n}"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "putShops-ok.json"
+  }
+}

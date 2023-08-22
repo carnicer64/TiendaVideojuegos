@@ -1,0 +1,15 @@
+{
+  "id": 3,
+  "pDate": "2023-05-23",
+  "dDate": "2023-05-27",
+  "orderPrice": 59.36,
+  "note": "in good state",
+  "client": {
+    "id": 15,
+    "name": "Adios",
+    "adress": "Calle 12",
+    "email": "email@email.com",
+    "tlf": "787647",
+    "nif": "dasdasdasd"
+  }
+}

@@ -1,0 +1,2187 @@
+openapi: 3.0.3
+info:
+  title: TiendaVideojuegos
+  description: TiendaVideojuegos
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:8080'
+tags:
+  - name: clients
+    description: Operaciones con clientes
+  - name: orders
+    description: Operaciones con pedidos
+  - name: employees
+    description: Operaciones con empleados
+  - name: shops
+    description: Operaciones con tiendas
+  - name: products
+    description: Operaciones con productos
+  - name: stocks
+    description: Operaciones con stock
+  - name: orderlines
+    description: Operaciones con lineas de pedido
+paths:
+  /clients:
+    get:
+      tags:
+        - clients
+      summary: Lista todos los clientes
+      description: Obtiene la lista de todos los clientes registrados en la aplicaion. Solo un parametro por peticion.
+      parameters:
+        - name: id
+          in: query
+          description: Obtiene el cliente por id pasado por parametro
+          required: false
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+        - name: name
+          in: query
+          description: Obtiene el cliente por nombre pasado por parametro
+          required: false
+          schema:
+            type: string
+          examples:
+            Ejemplo_1:
+              value: Adrian
+            Ejemplo_2:
+              value: Santi
+      responses:
+        '200':
+          description: Operacion correcta
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/client'
+        '404':
+          description: Cliente no encontrado
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode404'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode400'
+    post:
+      tags:
+        - clients
+      summary: Añade un nuevo cliente
+      description: Registra un nuevo cliente en el sistema
+      requestBody:
+        description: Crea un nuevo cliente en la aplicacion
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/clientDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  name: Adrian
+                  adress: Calle Zaragoza
+                  email: adrian@mail.com
+                  tlf: 666999666
+                  nif: 22558877B
+              Ejemplo_2:
+                value:
+                  name: Santi
+                  adress: Calle España
+                  email: adrian@mail.com
+                  tlf: 111222333
+                  nif: 11223344S
+        required: true
+      responses:
+        '200':
+          description: Cliente añadido correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/client'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+    put:
+      tags:
+        - clients
+      summary: Modifica clientes
+      description: Modifica un cliente de la aplicacion
+      parameters:
+        - name: id
+          in: path
+          description: ID del cliente a modificar
+          required: true
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+      requestBody:
+        description: Datos del cliente
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/clientDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  name: Adrian
+                  adress: Calle Zaragoza
+                  email: adrian@mail.com
+                  tlf: 666999666
+                  nif: 22558877B
+              Ejemplo_2:
+                value:
+                  name: Santi
+                  adress: Calle España
+                  email: adrian@mail.com
+                  tlf: 111222333
+                  nif: 11223344S
+        required: true
+      responses:
+        '200':
+          description: Cliente editado correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/client'
+        '404':
+          description: Cliente no encontrado
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode404'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode400'
+    delete:
+      tags:
+        - clients
+      summary: Elimina un cliente
+      description: Elimina un cliente de la aplicacion
+      parameters:
+        - name: id
+          in: path
+          description: ID del cliente a eliminar
+          required: true
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+      responses:
+        '204':
+          description: Cliente eliminado correctamente
+        '404':
+          description: Cliente no encontrado
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode404'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+  /orders:
+    get:
+      tags:
+        - orders
+      summary: Lista todas los pedidos
+      description: Obtiene la lista de todos los pedidos. Un parametro por peticion. Si no se introducen parametros lista todos.
+      parameters:
+        - name: id
+          in: query
+          description: Obtiene el pedido por id pasado por parametro.
+          required: false
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+        - name: idClient
+          in: query
+          description: Obtiene el pedido por id del cliente pasado por parametro.
+          required: false
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 3
+            Ejemplo_2:
+              value: 4
+      responses:
+        '200':
+          description: Operacion correcta
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/order'
+        '404':
+          description: Pedido no encontrado
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode404'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode400'
+    post:
+      tags:
+        - orders
+      summary: Añade nuevo pedido
+      description: Registra un nuevo pedido en el sistema
+      requestBody:
+        description: Datos del pedido que se va a introducir
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/orderDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  pDate: 2023-06-08
+                  dDate: 2023-06-09
+                  orderPrice: 152,5
+                  note: En buen estado
+                  client:
+                    id: 1
+                    name: Adrian
+                    adress: Calle Zaragoza
+                    email: adrian@mail.com
+                    tlf: 666999666
+                    nif: 22558877B
+              Ejemplo_2:
+                value:
+                  pDate: 2023-06-10
+                  dDate: 2023-06-20
+                  orderPrice: 198,2
+                  note: En mal estado
+                  client:
+                    id: 3
+                    name: Pepe
+                    adress: Calle Zaragoza
+                    email: pepe@mail.com
+                    tlf: 666999666
+                    nif: 111111111B
+        required: true
+      responses:
+        '200':
+          description: Pedido añadido correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/order'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+        '404':
+          description: Cliente no encontrado
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode404'
+    delete:
+      tags:
+        - orders
+      summary: Elimina pedidos
+      description: Elimina un pedido por id introducida por parametro
+      parameters:
+        - name: id
+          in: path
+          description: ID del pedido a eliminar
+          required: true
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+      responses:
+        '204':
+          description: Pedido eliminado correctamente
+        '404':
+          description: Pedido no encontrado
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode404'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+    put:
+      tags:
+        - orders
+      summary: Modifica pedidos
+      description: Modifica un pedido de la aplicacion
+      parameters:
+        - name: id
+          in: path
+          description: ID del pedido a eliminar
+          required: true
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+      requestBody:
+        description: Datos del pedido que se va a introducir
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/orderDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  pDate: 2023-06-08
+                  dDate: 2023-06-09
+                  orderPrice: 152,5
+                  note: En buen estado
+                  client:
+                    id: 1
+                    name: Adrian
+                    adress: Calle Zaragoza
+                    email: adrian@mail.com
+                    tlf: 666999666
+                    nif: 22558877B
+              Ejemplo_2:
+                value:
+                  pDate: 2023-06-10
+                  dDate: 2023-06-20
+                  orderPrice: 198,2
+                  note: En mal estado
+                  client:
+                    id: 3
+                    name: Pepe
+                    adress: Calle Zaragoza
+                    email: pepe@mail.com
+                    tlf: 666999666
+                    nif: 111111111B
+        required: true
+      responses:
+          '200':
+            description: Operacion correcta
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/order'
+          '404':
+            description: Pedido no encontrado
+            content:
+              application/json:
+                schema:
+                  items:
+                    $ref: '#/components/schemas/ErrorCode404'
+          '500':
+            description: Error interno
+            content:
+              application/json:
+                schema:
+                  items:
+                    $ref: '#/components/schemas/ErrorCode500'
+          '400':
+            description: Bad Request
+            content:
+              application/json:
+                schema:
+                  items:
+                    $ref: '#/components/schemas/ErrorCode400'
+  /employee:
+    get:
+      tags:
+        - employees
+      summary: Lista de todos los empleados
+      description: Obtiene una lista de todos los empleados mediante el parametro introducido.
+      parameters:
+        - name: id
+          in: query
+          description: Obtiene el empleado por id pasado por parametro.
+          required: false
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+        - name: name
+          in: query
+          description: Obtiene el empleado por nombre pasado por parametro
+          required: false
+          schema:
+            type: string
+          examples:
+            Ejemplo_1:
+              value: Adrian
+            Ejemplo_2:
+              value: Santi
+        - name: email
+          in: query
+          description: Obtiene el empleado por email pasado por parametro
+          required: false
+          schema:
+            type: string
+          examples:
+            Ejemplo_1:
+              value: adrian@gmail.com
+            Ejemplo_2:
+              value: pepe@gmail.com
+        - name: boss
+          in: query
+          description: Obtiene el empleado por valor del booleano boss pasado por parametro
+          required: false
+          schema:
+            type: boolean
+          examples:
+            Ejemplo_1:
+              value: true
+            Ejemplo_2:
+              value: false
+      responses:
+        '200':
+          description: Operacion correcta
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/employee'
+        '404':
+          description: Empleado no encontrado
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode404'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode400'
+    post:
+      tags:
+        - employees
+      summary: Añade nuevo empleado
+      description: Registra nuevo empleado en el sistema
+      requestBody:
+        description: Introduce el empleado introducido en la aplicacion.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/employeeDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  name: Perico
+                  email: perico@gmail.com
+                  boss: true
+              Ejemplo_2:
+                value:
+                  name: Sandra
+                  email: sandra@gmail.com
+                  boss: false
+        required: true
+      responses:
+        '200':
+          description: Cliente añadido correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/employee'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+    put:
+      tags:
+        - employees
+      summary: Modifica empleados
+      description: Modifica un empleado de la aplicacion
+      parameters:
+        - name: id
+          in: path
+          description: Id del empleado a modificar
+          required: true
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+      requestBody:
+        description: Nuevos datos del empleado a modificar
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/employeeDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  name: Jose
+                  email: perico@gmail.com
+                  boss: true
+              Ejemplo_2:
+                value:
+                  name: Claudia
+                  email: sandra@gmail.com
+                  boss: false
+        required: true
+      responses:
+        '200':
+          description: Empleado editado correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/employee'
+        '404':
+          description: Empleado no encontrado
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode404'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode400'
+    delete:
+      tags:
+        - employees
+      summary: Elimina un empleado
+      description: Elimina un empleado por id
+      parameters:
+        - name: id
+          in: path
+          description: ID del empleado a eliminar
+          required: true
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+      responses:
+        '204':
+          description: Empleado eliminado correctamente
+        '404':
+          description: Empleado no encontrado
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode404'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+  /shops:
+    get:
+      tags:
+        - shops
+      summary: Lista todas las tiendas
+      description: Obtiene la lista de todas las tiendas.
+      parameters:
+        - name: id
+          in: query
+          description: Obtiene la tienda por id pasado por parametro.
+          required: false
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+        - name: name
+          in: query
+          description: Obtiene la tienda por nombre
+          required: false
+          schema:
+            type: string
+          examples:
+            Ejemplo_1:
+              value: Tienda calle zaragoza
+            Ejemplo_2:
+              value: Tienda calle Huesca
+        - name: adress
+          in: query
+          description: Obtiene la tienda por direccion
+          required: false
+          schema:
+            type: string
+          examples:
+            Ejemplo_1:
+              value: C/Zaragoza, Zaragoza
+            Ejemplo_2:
+              value: C/Huesca, Huesca
+        - name: tlf
+          in: query
+          description: Obtiene la tienda por el telefono
+          required: false
+          schema:
+            type: string
+          examples:
+            Ejemplo_1:
+              value: 976666666
+            Ejemplo_2:
+              value: 976777777
+      responses:
+        '200':
+          description: Operacion correcta
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/shop'
+        '404':
+          description: Tienda no encontrada
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode404'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode400'
+    post:
+      tags:
+        - shops
+      summary: Añade nueva tienda
+      description: Registra una nueva tienda en la aplicacion
+      requestBody:
+        description: Datos del pedido que se va a introducir
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/shopDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  name: Tienda nueva
+                  adress: C/tienda nueva
+                  tlf: 976666661
+                  latitude: 9876.7653
+                  longitude: 2345.9765
+                  employee:
+                    id: 1
+                    name: Pepe
+                    email: pepe@gmail.com
+                    boss: true
+              Ejemplo_2:
+                value:
+                  name: Tienda nueva nueva
+                  adress: C/tienda nueva 2
+                  tlf: 9766666764
+                  latitude: 9876.7653
+                  longitude: 2345.9765
+                  employee:
+                    id: 1
+                    name: Pepe
+                    email: pepe@gmail.com
+                    boss: true
+        required: true
+      responses:
+        '200':
+          description: Tienda añadida correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/shop'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+        '404':
+          description: Empleado no encontrado
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode404'
+    delete:
+      tags:
+        - shops
+      summary: Elimina tiendas
+      description: Elimina una tienda por la id introducida por parametro
+      parameters:
+        - name: id
+          in: path
+          description: ID de la tienda a eliminar
+          required: true
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+      responses:
+        '204':
+          description: Tienda eliminada correctamente
+        '404':
+          description: Tienda no encontrada
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode404'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+    put:
+      tags:
+        - shops
+      summary: Modifica tiendas
+      description: Modifica una tienda de la aplicacion
+      parameters:
+        - name: id
+          in: path
+          description: ID de la tienda a eliminar
+          required: true
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+      requestBody:
+        description: Datos del pedido que se va a introducir
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/shopDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  name: Tienda nueva
+                  adress: C/tienda nueva
+                  tlf: 976666661
+                  latitude: 9876.7653
+                  longitude: 2345.9765
+                  employee:
+                    id: 1
+                    name: Pepe
+                    email: pepe@gmail.com
+                    boss: true
+              Ejemplo_2:
+                value:
+                  name: Tienda nueva nueva
+                  adress: C/tienda nueva 2
+                  tlf: 9766666764
+                  latitude: 9876.7653
+                  longitude: 2345.9765
+                  employee:
+                    id: 1
+                    name: Pepe
+                    email: pepe@gmail.com
+                    boss: true
+        required: true
+      responses:
+        '200':
+          description: Operacion correcta
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/shop'
+        '404':
+          description: Tienda no encontrada
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode404'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode400'
+  /products:
+    get:
+      tags:
+        - products
+      summary: Lista todos los productos
+      description: Obtiene una lista de los productos registrados segun el parametro elegido.
+      parameters:
+        - name: id
+          in: query
+          description: Obtiene el producto por id pasado por parametro
+          required: false
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+        - name: name
+          in: query
+          description: Obtiene el producto por nombre pasado por parametro
+          required: false
+          schema:
+            type: string
+          examples:
+            Ejemplo_1:
+              value: Final Fantasy
+            Ejemplo_2:
+              value: Civilizations
+        - name: cost
+          in: query
+          description: Obtiene el producto por precio de coste pasado por parametro
+          required: false
+          schema:
+            type: number
+            format: double
+          examples:
+            Ejemplo_1:
+              value: 156,25
+            Ejemplo_2:
+              value: 12,36
+        - name: sale
+          in: query
+          description: Obtiene el producto por precio de venta pasado por parametro
+          required: false
+          schema:
+            type: number
+            format: double
+          examples:
+            Ejemplo_1:
+              value: 156,25
+            Ejemplo_2:
+              value: 12,36
+      responses:
+        '200':
+          description: Operacion correcta
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/product'
+        '404':
+          description: Producto no encontrado
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode404'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode400'
+    post:
+      tags:
+        - products
+      summary: Añade un nuevo producto
+      description: Registra un nuevo producto en la aplicacion
+      requestBody:
+        description: Introduce los nuevos datos en el sistema
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/productDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  name: Final Fantasy
+                  cost: 56,26
+                  sale: 100,00
+                  barCode: 156235
+                  imageURL: www.foto1.com
+              Ejemplo_2:
+                value:
+                  name: Civilizations
+                  cost: 85,25
+                  sale: 100,00
+                  barCode: 156592
+                  imageURL: www.foto2.com
+        required: true
+      responses:
+        '200':
+          description: Producto añadido correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/product'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+    put:
+      tags:
+        - products
+      summary: Modifica productos
+      description: Modifica productos de la aplicacion
+      parameters:
+        - name: id
+          in: path
+          description: ID del producto a modificar
+          required: true
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+      requestBody:
+        description: Introduce los nuevos datos en el sistema
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/productDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  name: Final Fantasy
+                  cost: 56,26
+                  sale: 100,00
+                  barCode: 156235
+                  imageURL: www.foto1.com
+              Ejemplo_2:
+                value:
+                  name: Civilizations
+                  cost: 85,25
+                  sale: 100,00
+                  barCode: 156592
+                  imageURL: www.foto2.com
+        required: true
+      responses:
+        '200':
+          description: Producto editado correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/product'
+        '404':
+          description: Producto no encontrado
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode404'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode400'
+    delete:
+      tags:
+        - products
+      summary: Elimina un producto
+      description: Elimina un producto de la aplicaicon por id
+      parameters:
+        - name: id
+          in: path
+          description: ID del producto a eliminar
+          required: true
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+      responses:
+        '204':
+          description: Producto eliminado correctamente
+        '404':
+          description: Cliente no encontrado
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode404'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+  /stocks:
+    get:
+      tags:
+        - stocks
+      summary: Lista todo el stock
+      description: Obtiene una lista de todo el stock de la aplicacion.
+      parameters:
+        - name: id
+          in: query
+          description: Obtiene el pedido por id pasado por parametro.
+          required: false
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+        - name: idProduct
+          in: query
+          description: Obtiene el stock por id del producto pasado por parametro.
+          required: false
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 3
+            Ejemplo_2:
+              value: 4
+        - name: idShop
+          in: query
+          description: Obtiene el stock por id de la tienda pasado por parametro.
+          required: false
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 3
+            Ejemplo_2:
+              value: 4
+        - name: amount
+          in: query
+          description: Obtiene el pedido por cantidad pasado por parametro.
+          required: false
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+        - name: note
+          in: query
+          description: Obtiene el pedido por la nota pasado por parametro.
+          required: false
+          schema:
+            type: string
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+      responses:
+        '200':
+          description: Operacion correcta
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/stock'
+        '404':
+          description: Stock no encontrado
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode404'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode400'
+    post:
+      tags:
+        - stocks
+      summary: Añade stock
+      description: Registra nuevo stock en la aplicacion
+      requestBody:
+        description: Datos del stock que se va a introducir
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/stockDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  amount: 196
+                  note: En buen estado
+                  product:
+                    id: 1
+                  shop:
+                    id: 1
+              Ejemplo_2:
+                value:
+                  amount: 200
+                  note: En mal estado
+                  product:
+                    id: 2
+                  shop:
+                    id: 2
+        required: true
+      responses:
+        '200':
+          description: Stock añadido correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/stock'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+        '404':
+          description: Producto no encontrado/Tienda no encontrada
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode404'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode400'
+    delete:
+      tags:
+        - stocks
+      summary: Elimina stock
+      description: Elimina el stock mediante el id introducido.
+      parameters:
+        - name: id
+          in: path
+          description: ID del stock a eliminar
+          required: true
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+      responses:
+        '204':
+          description: Stock eliminado correctamente
+        '404':
+          description: Stock no encontrado
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode404'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+    put:
+      tags:
+        - stocks
+      summary: Modifica stock
+      description: Modifica el stock de la aplicacion
+      parameters:
+        - name: id
+          in: path
+          description: ID del stock a eliminar
+          required: true
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+      requestBody:
+        description: Datos del stock que se va a modificar
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/stockDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  amount: 100
+                  note: En buen estado
+                  product:
+                    id: 4
+                  shop:
+                    id: 1
+              Ejemplo_2:
+                value:
+                  amount: 500
+                  note: En mal estado
+                  product:
+                    id: 2
+                  shop:
+                    id: 6
+        required: true
+      responses:
+        '200':
+          description: Stock modificado correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/stock'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+        '404':
+          description: Stock no encontrado
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode404'
+  /orderlines:
+    get:
+      tags:
+        - orderlines
+      summary: Lista las lineas de pedido
+      description: Hace una lista de las lineas de pedido segun el parametro introducido
+      parameters:
+        - name: id
+          in: query
+          description: Obtiene el empleado por id pasado por parametro.
+          required: false
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+        - name: idStock
+          in: query
+          description: Obtiene la linea de pedido segun el stock
+          required: false
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+        - name: idOrder
+          in: query
+          description: Obtiene la linea de pedido segun el pedido
+          required: false
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+        - name: amount
+          in: query
+          description: Obtiene la linea de pedido segun la cantidad de producto en la linea de pedido
+          required: false
+          schema:
+            type: string
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+        - name: name
+          in: query
+          description: Obtiene la linea de pedido segun el nombre de la linea
+          required: false
+          schema:
+            type: string
+          examples:
+            Ejemplo_1:
+              value: Linea234
+            Ejemplo_2:
+              value: Linea9867
+        - name: price
+          in: query
+          description: Obtiene la linea de pedido segun el precio de la linea de pedido
+          required: false
+          schema:
+            type: string
+          examples:
+            Ejemplo_1:
+              value: 963
+            Ejemplo_2:
+              value: 56
+      responses:
+        '200':
+          description: Operacion correcta
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/orderline'
+        '404':
+          description: Linea de pedido no encontrada
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode404'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode400'
+    post:
+      tags:
+        - orderlines
+      summary: Añade una linea de pedido
+      description: Registra una nueva linea de pedido en el sistema
+      requestBody:
+        description: Introduce la linea de pedido en la aplicacion
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/orderlineDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  name: Linea1234
+                  amount: 52
+                  price: 600,0
+                  order:
+                    id: 2
+                  stock:
+                    id: 4
+              Ejemplo_2:
+                value:
+                  name: Linea5678
+                  amount: 82
+                  price: 1200
+                  order:
+                    id: 5
+                  stock:
+                    id: 6
+        required: true
+      responses:
+        '200':
+          description: Linea de pedido añadida correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/orderline'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+        '404':
+          description: Pedido no encontrado/Stock no encontrado
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode404'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode400'
+    delete:
+      tags:
+        - orderlines
+      summary: Elimina lineas de pedido
+      description: Elimina una linea de pedido por id
+      parameters:
+        - name: id
+          in: path
+          description: ID de la linea de pedido a eliminar
+          required: true
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+      responses:
+        '204':
+          description: Linea de pedido eliminada correctamente
+        '404':
+          description: Linea de pedido no encontrada
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode404'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+    put:
+      tags:
+        - orderlines
+      summary: Modifica lineas de pedido
+      description: Modifica una linea de pedido por id
+      parameters:
+        - name: id
+          in: path
+          description: ID del stock a eliminar
+          required: true
+          schema:
+            type: integer
+          examples:
+            Ejemplo_1:
+              value: 1
+            Ejemplo_2:
+              value: 2
+      requestBody:
+        description: Modifica la linea de pedido en la aplicacion
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/orderlineDTO'
+            examples:
+              Ejemplo_1:
+                value:
+                  name: Linea7654
+                  amount: 96
+                  price: 852
+                  order:
+                    id: 2
+                  stock:
+                    id: 4
+              Ejemplo_2:
+                value:
+                  name: Linea3456
+                  amount: 75
+                  price: 654
+                  order:
+                    id: 5
+                  stock:
+                    id: 6
+        required: true
+      responses:
+        '200':
+          description: Linea de pedido modificada correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/stock'
+        '500':
+          description: Error interno
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode500'
+        '404':
+          description: Linea de pedido no encontrada
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorCode404'
+components:
+  schemas:
+    client:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Identificador unico del cliente
+          format: int64
+          example: 1
+        name:
+          type: string
+          description: Nombre del cliente
+          example: Adrian
+        adress:
+          type: string
+          description: Direccion del cliente
+          example: Calle Zaragoza
+        email:
+          type: string
+          description: Correo electronico del cliente
+          example: adrian@email.com
+        tlf:
+          type: string
+          description: Telefono del cliente
+          example: 666999666
+        nif:
+          type: string
+          description: Documento de identidad del cliente
+          example: 22884480B
+    clientDTO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre del cliente
+          example: Adrian
+        adress:
+          type: string
+          description: Direccion del cliente
+          example: Calle Zaragoza
+        email:
+          type: string
+          description: Correo electronico del cliente
+          example: adrian@email.com
+        tlf:
+          type: string
+          description: Telefono del cliente
+          example: 666999666
+        nif:
+          type: string
+          description: Documento de identidad del cliente
+          example: 22884480B
+    order:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Identificador
+          format: int64
+          example: 123
+        pDate:
+          type: number
+          format: date
+          description: Purchase date. Fecha de compra
+          example: 2023-06-30
+        dDate:
+          type: number
+          format: date
+          description: Delivery date. Fecha de envio
+          example: 2023-07-03
+        orderPrice:
+          type: number
+          format: double
+          description: Precio del pedido
+          example: 140,3
+        note:
+          type: string
+          description: Nota descriptiva del pedido
+          example: Enviar por la mañana
+        client:
+          type: object
+          description: Datos del cliente asociado al pedido
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            adress:
+              type: string
+            email:
+              type: string
+            tlf:
+              type: string
+            nif:
+              type: string
+    orderDTO:
+      type: object
+      properties:
+        pDate:
+          type: number
+          format: date
+          description: Purchase date. Fecha de compra
+          example: 2023-06-30
+        dDate:
+          type: number
+          format: date
+          description: Delivery date. Fecha de envio
+          example: 2023-07-03
+        orderPrice:
+          type: number
+          format: double
+          description: Precio del pedido
+          example: 140,3
+        note:
+          type: string
+          description: Nota descriptiva del pedido
+          example: Enviar por la mañana
+        client:
+          type: object
+          description: Datos del cliente asociado al pedido
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            adress:
+              type: string
+            email:
+              type: string
+            tlf:
+              type: string
+            nif:
+              type: string
+    employee:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Identificador
+          format: int64
+          example: 123
+        name:
+          type: string
+          description: Nombre
+          example: Perico Perez
+        email:
+          type: string
+          description: Email
+          example: perico@gmail.com
+        boss:
+          type: boolean
+          description: True si es jefe/ False no es jefe
+          example: true
+    employeeDTO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre
+          example: Perico Perez
+        email:
+          type: string
+          description: Email
+          example: perico@gmail.com
+        boss:
+          type: boolean
+          description: True si es jefe/ False no es jefe
+          example: true
+    shop:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Identificador
+          format: int64
+          example: 123
+        name:
+          type: string
+          description: Nombre
+          example: Tienda Calle Zaragoza
+        adress:
+          type: string
+          description: Direccion del cliente
+          example: Calle Zaragoza
+        tlf:
+          type: string
+          description: Telefono del cliente
+          example: 666999666
+        latitude:
+          type: string
+          description: Latitud de la tienda
+          example: 666.98765
+        longitude:
+          type: string
+          description: Longitude de la tienda
+          example: 666.98765
+        employee:
+          type: object
+          description: Empleado gerente asociado a la tienda
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            email:
+              type: string
+            boss:
+              type: boolean
+    shopDTO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre
+          example: Tienda Calle Zaragoza
+        adress:
+          type: string
+          description: Direccion del cliente
+          example: Calle Zaragoza
+        tlf:
+          type: string
+          description: Telefono del cliente
+          example: 666999666
+        latitude:
+          type: string
+          description: Latitud de la tienda
+          example: 666.98765
+        longitude:
+          type: string
+          description: Longitude de la tienda
+          example: 666.98765
+        employee:
+          type: object
+          description: Empleado gerente asociado a la tienda
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            email:
+              type: string
+            boss:
+              type: boolean
+    product:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Identificador
+          format: int64
+          example: 123
+        name:
+          type: string
+          description: Nombre
+          example: Tienda Calle Zaragoza
+        cost:
+          type: number
+          format: double
+          description: Coste del producto
+          example: 56,98
+        sale:
+          type: number
+          format: double
+          description: Precio de venta del producto
+          example: 60,05
+        barCode:
+          type: integer
+          description: Codigo de barras
+          example: 15847652
+        imageURL:
+          type: string
+          description: Url de imagen
+          example: www.foto.com
+    productDTO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre
+          example: Tienda Calle Zaragoza
+        cost:
+          type: number
+          format: double
+          description: Coste del producto
+          example: 56,98
+        sale:
+          type: number
+          format: double
+          description: Precio de venta del producto
+          example: 60,05
+        barCode:
+          type: integer
+          description: Codigo de barras
+          example: 15847652
+        imageURL:
+          type: string
+          description: Url de imagen
+          example: www.foto.com
+    stock:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Identificador
+          format: int64
+          example: 123
+        amount:
+          type: integer
+          description: cantidad de producto
+          example: 200
+        note:
+          type: string
+          description: Nota asociada al stock
+          example: Son los ultimos productos
+        product:
+          type: object
+          description: Producto asociado al stock
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            cost:
+              type: number
+              format: double
+            sale:
+              type: number
+              format: double
+            barCode:
+              type: integer
+            imageURL:
+              type: string
+    stockDTO:
+      type: object
+      properties:
+        amount:
+          type: integer
+          description: cantidad de producto
+          example: 200
+        note:
+          type: string
+          description: Nota asociada al stock
+          example: Son los ultimos productos
+        product:
+          type: object
+          description: Producto asociado al stock
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            cost:
+              type: number
+              format: double
+            sale:
+              type: number
+              format: double
+            barCode:
+              type: integer
+            imageURL:
+              type: string
+    orderline:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Identificador
+          format: int64
+          example: 123
+        name:
+          type: string
+          description: Nombre de la linea
+          example: Linea1234
+        amount:
+          type: string
+          description: Cantidad de producto
+          example: 596
+        price:
+          type: string
+          description: Precio de la linea de pedido
+          example: 876,98
+        order:
+          type: object
+          description: Pedido asociado a la linea de pedido
+          properties:
+            id:
+              type: integer
+            pDate:
+              type: number
+              format: date
+            dDate:
+              type: number
+              format: date
+            orderPrice:
+              type: number
+              format: double
+            note:
+              type: string
+        stock:
+          type: object
+          description: Stock asociado a la linea de pedido
+          properties:
+            id:
+              type: integer
+            amount:
+              type: integer
+            note:
+              type: string
+            product:
+              type: object
+            shop:
+              type: object
+    orderlineDTO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre de la linea
+          example: Linea1234
+        amount:
+          type: string
+          description: Cantidad de producto
+          example: 596
+        price:
+          type: string
+          description: Precio de la linea de pedido
+          example: 876,98
+        order:
+          type: object
+          description: Pedido asociado a la linea de pedido
+          properties:
+            id:
+              type: integer
+            pDate:
+              type: number
+              format: date
+            dDate:
+              type: number
+              format: date
+            orderPrice:
+              type: number
+              format: double
+            note:
+              type: string
+        stock:
+          type: object
+          description: Stock asociado a la linea de pedido
+          properties:
+            id:
+              type: integer
+            amount:
+              type: integer
+            note:
+              type: string
+            product:
+              type: object
+            shop:
+              type: object
+    ErrorCode404:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Numero del error
+          example: 404
+        message:
+          type: string
+          description: Mensaje de error
+          example: Objeto no encontrado
+        errors:
+          type: array
+          example: ""
+      xml:
+        name: ErrorCode404
+    ErrorCode500:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Numero del error
+          example: 500
+        message:
+          type: string
+          description: Mensaje de error
+          example: Internal Server Error
+        errors:
+          type: array
+          example: ""
+      xml:
+        name: ErrorCode500
+    ErrorCode400:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Numero del error
+          example: 400
+        message:
+          type: string
+          description: Mensaje de error
+          example: Bad Request
+        errors:
+          type: array
+          example: ""
+      xml:
+        name: ErrorCode500
+

@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/orders?id=1"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "getOrders-ok2.json"
+  }
+}

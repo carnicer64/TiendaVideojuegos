@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "DELETE",
+    "url": "/shops"
+  },
+  "response": {
+    "status": 405,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "deleteShops-ko.json"
+  }
+}

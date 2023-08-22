@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
@@ -18,6 +20,8 @@ public class OrderLine {
     @Column
     private String name;
     @Column
+    @NotBlank(message = "La cantidad no puede estar vacia")
+    @NotNull(message = "La cantidad es obligatoria")
     private String amount;
     @Column
     private String price;

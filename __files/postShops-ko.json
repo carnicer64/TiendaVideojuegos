@@ -1,0 +1,7 @@
+{
+  "code": 500,
+  "message": "Internal Server Error",
+  "errors": {
+    "La direccion no puede estar vacia": "La direccion no puede estar vacia"
+  }
+}

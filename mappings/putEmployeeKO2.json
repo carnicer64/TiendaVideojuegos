@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "PUT",
+    "url": "/employee/29",
+    "bodyPatterns": [
+      {
+        "equalToJson": "{\n\"name\": \"Maria\",\n\"email\": \"email@email.com\",\n\"boss\": true\n}"
+      }
+    ]
+  },
+  "response": {
+    "status": 404,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "employeeNotFound.json"
+  }
+}

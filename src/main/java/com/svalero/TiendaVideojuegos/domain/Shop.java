@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 ;
 
 @Data
@@ -20,6 +22,8 @@ public class Shop{
     @Column
     private String name;
     @Column
+    @NotBlank(message = "La direccion no puede estar vacia")
+    @NotNull(message = "La direccion es obligatoria")
     private String adress;
     @Column
     private String tlf;

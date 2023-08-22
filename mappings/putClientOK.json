@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "PUT",
+    "url": "/clients/1",
+    "bodyPatterns": [
+      {
+        "equalToJson": "{\n\"name\": \"Manolo\",\n\"adress\": \"Calle 16\",\n\"email\": \"email@email.com\",\n\"tlf\": \"97897840\",\n\"nif\": \"dasdasdasd\"\n}"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "putClient-ok.json"
+  }
+}

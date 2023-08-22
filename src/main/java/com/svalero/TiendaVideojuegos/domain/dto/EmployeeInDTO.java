@@ -11,7 +11,6 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class EmployeeInDTO {
 
-    private long id;
     private String name;
     private String email;
     private Boolean boss;

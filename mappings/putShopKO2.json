@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "PUT",
+    "url": "/shops/1",
+    "bodyPatterns": [
+      {
+        "equalToJson": "{\n\"name\": \"Tienda nueva\",\n\"adress\": \"Calle456\",\n\"tlf\": \"1111111\",\n\"latitude\": \"15646456\",\n\"longitude\": \"3131212\",\n\"employee\": {\n\"id\": \"87\"\n}\n}"
+      }
+    ]
+  },
+  "response": {
+    "status": 404,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "employeeNotFound.json"
+  }
+}

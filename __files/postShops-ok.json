@@ -1,0 +1,11 @@
+{
+  "id": 3,
+  "name": "Tienda3",
+  "adress": "Calle ZARAGOZA",
+  "tlf": "976625863",
+  "latitude": "15646456",
+  "longitude": "3131212",
+  "employee": {
+    "id": 6
+  }
+}

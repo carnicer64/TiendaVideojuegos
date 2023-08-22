@@ -1,6 +1,7 @@
 package com.svalero.TiendaVideojuegos.controller;
 
-import com.svalero.TiendaVideojuegos.Util.ErrorMessage;
+import com.svalero.TiendaVideojuegos.Util.ErrorMessageUtil;
+import com.svalero.TiendaVideojuegos.exception.ErrorMessage;
 import com.svalero.TiendaVideojuegos.domain.Client;
 import com.svalero.TiendaVideojuegos.domain.dto.ClientInDTO;
 import com.svalero.TiendaVideojuegos.domain.dto.ClientOutDTO;
@@ -15,6 +16,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -111,6 +113,13 @@ public class ClientController {
 
         ErrorMessage badRequestErrorMessage = new ErrorMessage(400, "Bad Request", errors);
         return new ResponseEntity<>(badRequestErrorMessage, HttpStatus.BAD_REQUEST);
+    }
+
+    //Copiar esto en todos los controller
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<ErrorMessage> handleConstraintViolationException(ConstraintViolationException cve){
+        logger.error("Constraint violation");
+        return ErrorMessageUtil.getErrorExceptionResponseEntity(cve);
     }
 
     @ExceptionHandler(ClientNotFoundException.class)

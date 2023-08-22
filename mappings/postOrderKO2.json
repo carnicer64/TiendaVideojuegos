@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/orders"
+  },
+  "response": {
+    "status": 500,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "postOrder-ko2.json"
+  }
+}
