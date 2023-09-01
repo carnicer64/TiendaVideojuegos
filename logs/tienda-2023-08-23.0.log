@@ -1,0 +1,12 @@
+2023-08-23 17:09:14,758 INFO org.springframework.boot.StartupInfoLogger [main] Starting TiendaVideojuegosApplication using Java 17.0.7 on MacBook-Pro-de-Adrian.local with PID 74375 (/Users/adrian/2-asignaturas/Acceso-a-datos/1/TiendaVideojuegos/target/classes started by adrian in /Users/adrian/2-asignaturas/Acceso-a-datos/1/TiendaVideojuegos)
+2023-08-23 17:09:14,764 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-08-23 17:09:17,421 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2023-08-23 17:09:17,422 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2023-08-23 17:09:17,422 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-08-23 17:09:17,555 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2023-08-23 17:09:18,329 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2023-08-23 17:09:18,894 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-08-23 17:09:20,722 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-23 17:09:21,711 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2023-08-23 17:09:21,757 INFO org.springframework.boot.StartupInfoLogger [main] Started TiendaVideojuegosApplication in 7.707 seconds (JVM running for 8.4)
+2023-08-23 23:09:47,462 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=30m22s938ms).
