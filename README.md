@@ -1,3 +1,6 @@
+EL REPOSITORIO DE LA PARTE REACTIVE: https://github.com/carnicer64/Tienda_Reactive
+
+
 # AA2 ACCESO A DATOS
 
 ### Requisitos obligatorios
